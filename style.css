@@ -1,0 +1,166 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: "Spartan-Regular";
+}
+
+@font-face {
+	font-family: "Spartan-Light";
+	src: url("./fonts/spartan/Spartan-Light.ttf");
+}
+@font-face {
+	font-family: "Spartan-Regular";
+	src: url("./fonts/spartan/Spartan-Regular.ttf");
+}
+@font-face {
+	font-family: "Spartan-Bold";
+	src: url("./fonts/spartan/Spartan-Bold.ttf");
+}
+@font-face {
+	font-family: "SpaceMono-Regular";
+	src: url("./fonts/space_mono/SpaceMono-Regular.ttf");
+}
+@font-face {
+	font-family: "SpaceMono-Bold";
+	src: url("./fonts/space_mono/SpaceMono-Bold.ttf");
+}
+
+a {
+	color: inherit;
+}
+
+.navbar {
+	display: flex;
+	justify-content: space-between;
+}
+
+.nav-list {
+	display: flex;
+	gap: 39px;
+}
+
+.nav-item {
+	font-family: "SpaceMono-Regular";
+	font-size: 12px;
+}
+
+li {
+	list-style: none;
+}
+
+.product-info ul li {
+	list-style: initial;
+}
+
+.container {
+	margin: 36px 31px;
+}
+
+.products {
+	display: flex;
+	gap: 185px;
+	margin: 93px 66px 0;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.products-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.products-img {
+	max-height: 440px;
+	margin-bottom: 62px;
+	display: block;
+}
+
+.products-title {
+	margin-bottom: 15px;
+	font-size: 12px;
+	font-family: "Spartan-Light";
+	/* letter-spacing: 0.5px; */
+}
+
+.products-price {
+	font-size: 10px;
+	font-family: "Spartan-Bold";
+}
+
+.product-page {
+	display: flex;
+	justify-content: space-between;
+	padding: 150px 25px 0 25px;
+	width: 100%;
+	align-items: center;
+}
+
+.product-info,
+.purchase-info {
+	width: 25%;
+	line-height: 20px;
+	font-family: "Spartan-Regular";
+}
+
+.product-image {
+	width: 50%;
+	text-align: center;
+}
+
+.product-image img {
+	width: 100%;
+	max-width: 400px;
+}
+
+.product-info h2 {
+	font-size: 16px;
+}
+
+.product-info ul {
+	list-style: none;
+	padding: 0;
+	font-size: 16px;
+	margin: 20px 0;
+}
+
+.product-info li {
+	margin-bottom: 5px;
+}
+
+.purchase-info select,
+.purchase-info button {
+	width: 100%;
+	padding: 10px;
+	margin-top: 10px;
+}
+
+.purchase-info button {
+	background-color: #222;
+	color: white;
+	border: none;
+	cursor: pointer;
+}
+
+.purchase-info button:hover {
+	background-color: #323232;
+}
+
+.price {
+	display: flex;
+	justify-content: space-between;
+	font-size: 16px;
+	margin-bottom: 10px;
+}
+
+.price span {
+	font-family: "Spartan-Light";
+	color: #535353;
+}
+
+.model-info {
+	padding-top: 100px;
+	color: #535353;
+	font-size: 14px;
+}
