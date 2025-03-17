@@ -380,6 +380,11 @@ body.menu-open {
 	padding-right: 64px;
 }
 
+@media (min-width: 1200px) {
+	.products {
+		gap: 272px;
+	}
+  }
 
 @media (max-width: 834px) {
 	.desktop-cart {
