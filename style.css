@@ -2,7 +2,6 @@
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
-	font-family: "Spartan-Regular";
 }
 
 @font-face {
@@ -26,19 +25,46 @@
 	src: url("./fonts/space_mono/SpaceMono-Bold.ttf");
 }
 
+body {
+	background-color: #fff;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+main {
+	flex: 1;
+}
+
 a {
 	color: inherit;
+	text-transform: uppercase;
+	text-decoration: none;
+}
+
+.logo {
+	height: 87px;
 }
 
 .navbar {
 	display: flex;
 	justify-content: space-between;
+	margin-left: 22px;
+	position: relative;
+}
+
+.nav-cart {
+    display: flex;
+    align-items: center;
+	gap: 34px;
 }
 
 .nav-list {
 	display: flex;
+	align-items: center;
 	gap: 39px;
 }
+
 
 .nav-item {
 	font-family: "SpaceMono-Regular";
@@ -59,8 +85,8 @@ li {
 
 .products {
 	display: flex;
-	gap: 185px;
-	margin: 93px 66px 0;
+	gap: 214px;
+	margin: 93px 66px 93px;
 	justify-content: center;
 	flex-wrap: wrap;
 }
@@ -69,10 +95,11 @@ li {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	text-align: center;
 }
 
 .products-img {
-	max-height: 440px;
+	max-height: 523px;
 	margin-bottom: 62px;
 	display: block;
 }
@@ -89,18 +116,24 @@ li {
 	font-family: "Spartan-Bold";
 }
 
+.product-container {
+	display: flex;
+}
+
 .product-page {
 	display: flex;
 	justify-content: space-between;
-	padding: 150px 25px 0 25px;
+	padding: 25px 55px;
 	width: 100%;
 	align-items: center;
+	flex: 1;
 }
 
 .product-info,
 .purchase-info {
 	width: 25%;
 	line-height: 20px;
+	letter-spacing: 1px;
 	font-family: "Spartan-Regular";
 }
 
@@ -114,20 +147,69 @@ li {
 	max-width: 400px;
 }
 
-.product-info h2 {
+.product-info_heading {
 	font-size: 16px;
 }
 
 .product-info ul {
 	list-style: none;
 	padding: 0;
-	font-size: 16px;
+	font-size: 14px;
 	margin: 20px 0;
+	padding-left: 15px;
+	line-height: 16px;
 }
 
 .product-info li {
 	margin-bottom: 5px;
 }
+
+
+.product-info h2, .product-info p {
+	line-height: 20px;
+	font-size: 14px;
+}
+
+.product-slider {
+    position: relative;
+    max-width: 400px; /* Adjust size as needed */
+    margin: auto;
+    overflow: hidden;
+	display: flex;
+}
+
+.slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slider img {
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    width: 15px; /* Adjust icon size */
+    height: 27px;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.prev img, .next img {
+    width: 100%;
+    height: 100%;
+}
+
 
 .purchase-info select,
 .purchase-info button {
@@ -150,7 +232,7 @@ li {
 .price {
 	display: flex;
 	justify-content: space-between;
-	font-size: 16px;
+	font-size: 14px;
 	margin-bottom: 10px;
 }
 
@@ -160,7 +242,364 @@ li {
 }
 
 .model-info {
-	padding-top: 100px;
+	padding-top: 238px;
 	color: #535353;
 	font-size: 14px;
+	display: flex;
+	flex-direction: column;
+	gap: 9px;
+	line-height: 16px;
+}
+
+.model-info a {
+	text-decoration: underline;
+	text-transform: capitalize;
+}
+
+.container-about {
+	display: flex;
+	justify-content: space-between;
+	margin: 43px auto;
+	padding-right: 75px;
+}
+
+.about_heading {
+	font-family: "Spartan-Light";
+	font-size: 70px;
+}
+
+.left-section {
+	width: 50%;
+	gap: 20px;
+	display: flex;
+	flex-direction: column;
+}
+
+.left-section p {
+	font-size: 11px;
+	font-family: "Spartan-Light";
+	color: #2a2a2a;
+	margin: 5px 0;
+}
+
+.right-section {
+	width: 50%;
+	font-family: "Spartan-Light";
+	line-height: 39px;
+	font-size: 25px;
+	letter-spacing: 2%;
+}
+
+.right-section strong {
+	font-family: "Spartan-Bold";
+}
+
+.values {
+	margin-top: 120px;
+	font-size: 20px;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 25px;
+}
+
+.values h5 {
+	font-size: 11px;
+	font-family: "Spartan-Bold";
+	color: #2a2a2a;
+	position: absolute;
+	left: -85px;
+}
+
+.values p {
+	color: #2a2a2a;
+	line-height: 31px;
+}
+
+.about-section {
+	margin-top: 135px;
+}
+
+footer p {
+	text-align: center;
+	font-family: "Spartan-Light";
+	font-size: 11px;
+	color: #535353;
+	line-height: 11.78px;
+	margin-bottom: 20px;
+}
+
+.burger-menu {
+	display: none;
+	background: none;
+	border: none;
+	cursor: pointer;
+}
+
+.close-menu {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	background: none;
+	border: none;
+	cursor: pointer;
+	z-index: 100;
+	width: 32px;
+	height: 32px;
+	display: none; /* Hidden by default */
+}
+
+body.menu-open {
+	overflow: hidden;
+}
+
+.bundle-container {
+	display: flex;
+	align-items: center;
+	text-align: center;
+}
+
+.line {
+	flex: 1;
+	height: 1px;
+	background-color: black;
+	margin: 0 10px;
+	opacity: 20%;
+}
+
+.heading {
+	white-space: nowrap;
+	font-family: "Spartan-Regular";
+	font-size: 25px;
+	line-height: 107%;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+}
+
+#cart-toggle {
+	padding-right: 64px;
+}
+
+
+@media (max-width: 834px) {
+	.desktop-cart {
+		display: none;
+	}
+	
+	.mobile-cart {
+		display: block;
+	}
+	
+	.nav-list.active .mobile-cart {
+		display: block;
+	}
+	
+	.navbar {
+		align-items: center;
+	}
+	.burger-menu {
+		width: 32px;
+		height: 32px;
+		display: block; /* Show burger menu on mobile */
+	}
+	
+	.nav-list {
+		position: fixed; /* Makes it cover the whole screen */
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100vh; /* Full viewport height */
+		background: #f9f5ef; /* Light background */
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		opacity: 0;
+		visibility: hidden;
+		transition: opacity 0.3s ease, visibility 0.3s ease;
+	}
+	
+	/* When active, the list becomes visible */
+	.nav-list.active {
+		display: flex;
+		flex-direction: column;
+		opacity: 0.95;
+		visibility: visible;
+		gap: 36px;
+	}
+	
+	.logo {
+		width: 260px;
+		height: 63px;
+	}
+	
+	.nav-list.active .close-menu {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	
+	.nav-list a {
+		font-size: 20px;
+	}
+	
+	.products {
+		margin: 55px 45px;
+		gap: 100px;
+	}
+	
+	.product-page {
+		flex-direction: column;
+		align-items: normal;
+		padding: 25px 25px;
+	}
+	
+	.product-info {
+		margin-top: 39px;
+		order: 2;
+		width: 100%;
+		font-size: 16px;
+	}
+	
+	.purchase-info {
+		display: flex;
+		flex-direction: column;
+	}
+	
+	.model-info {
+		order: -1;
+		padding-top: 0;
+		margin-bottom: 83px;
+	}
+	
+	.product-image {
+		order: 1;
+		align-self: center;
+	}
+	.purchase-info {
+		order: 3;
+		width: 100%;
+		margin-top: 78px;
+	}
+	
+	.product-info ul {
+		margin: 50px 0;
+		padding-left: 15px;
+	}
+	
+	.product-info_heading {
+		margin-bottom: 10px;
+		font-family: "Spartan-Bold";
+	}
+	
+	.product-info_heading,
+	.product-info_desc {
+		text-align: center;
+	}
+	
+	.product-info_desc {
+		color: #111111;
+	}
+	
+	
+	
+    .nav-list.active::after {
+		content: '';
+        display: block;
+    }
+	
+    /* Add the cart to the mobile menu */
+    .nav-list.active .nav-cart {
+		display: block;
+        margin: 0;
+    }
+	
+}
+
+/* Responsive Styles */
+@media (max-width: 450px) {
+	.product-page {
+		font-size: 10px;
+	}
+	
+	.model-info {
+		font-size: 10px;
+	}
+	
+	.product-info_desc,
+	.product-info ul,
+	.product-info p {
+		font-size: 10px;
+		letter-spacing: 0;
+		line-height: 175%;
+	}
+	
+	.product-info {
+		margin-top: 30px;
+	}
+	
+	.price {
+		margin-bottom: 10px;
+	}
+	
+	.price p,
+	.price span {
+		font-size: 12px;
+	}
+	
+	.product-info ul {
+		margin: 40px 0;
+	}
+	
+	.product-info_heading {
+		font-size: 12px;
+	}
+	
+	.about-section {
+		margin-top: 50px;
+	}
+	
+	.burger-menu img {
+		width: 22px;
+		height: 12px;
+	}
+	
+	.container-about {
+		padding-right: 0;
+	}
+	
+	.about_heading {
+		font-size: 30px;
+	}
+	
+	.left-section {
+		order: 2;
+		text-align: end;
+		gap: 10px;
+	}
+	
+	.left-section p {
+		font-size: 8px;
+	}
+	
+	.right-section,
+	.values p {
+		order: 1;
+		font-size: 13px;
+		line-height: 158%;
+	}
+	
+	.values h5 {
+		position: relative;
+		left: 0;
+		font-size: 12px;
+	}
+	
+	.logo {
+		width: 210px;
+		height: 51px;
+	}
+}
+
+.model-info a {
+	letter-spacing: 1%;
 }

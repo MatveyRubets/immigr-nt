@@ -4,11 +4,13 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="../style.css" />
-		<title>IMMIGR NT</title>
+		<title>Hoodie</title>
 		<style>
 			.shopify-buy--visually-hidden { display:none!important; }
-			.shopify-buy-frame, .shopify-buy__cart-toggle { padding:0px!important; margin:0px!important; display:inline!important; height:auto!important;line-height:1px!important;top:0!important;bottom:0!important; border-radius:0px!important; overflow:visible!important; }
-			
+			.shopify-buy-frame, .shopify-buy__cart-toggle { padding:0px!important; margin:0px!important; display:inline!important; height:auto!important;line-height:1px!important;top:0!important;bottom:0!important; border-radius:0px!important }
+			/* @media (min-width: 500px) {
+				.shopify-buy__btn-wrapper {margin: 0px !important;}
+			} */
 		</style>
 	</head>
 	<body>
@@ -36,7 +38,7 @@
 						<a href="https://www.instagram.com/immigr.nt/">instagram</a>
 					</li>
 					<li class="nav-item">
-						<a href="#" id="cart-toggle" class="nav-item"></a>
+						<a href="#" id="cart-toggle"></a>
 					</li>
 				</ul>
 				<a  href="./index.html">
@@ -44,88 +46,64 @@
 				</a>
 			</nav>
 		</header>
-		<main>
-			<ul class="products">
-				<li class="products-item">
-					<a href="./hoodie.html">
-						<img
-							class="products-img"
-							src="../assets/images/immi-hoodie.png"
-							alt=""
-						/>
-						<p class="products-title">Clean slate hoodie</p>
-						<p class="products-price">120 EUR</p>
-					</a>
-				</li>
-				<li class="products-item">
-					<a href="./longsleeve.html">
-						<img
-							class="products-img"
-							src="../assets/images/immi-longsleeve.png"
-							alt=""
-						/>
-						<p class="products-title">Clean slate long sleeve</p>
-						<p class="products-price">60 EUR</p>
-					</a>
-				</li>
-				<li class="products-item">
-					<a href="./product.html">
-						<img
-							class="products-img"
-							src="../assets/images/immi-pants.png"
-							alt=""
-						/>
-						<p class="products-title">Clean slate sweatpants</p>
-						<p class="products-price">120 EUR</p>
-					</a>
-				</li>
-			</ul>
-			<div class="bundle-container">
-                <div class="line"></div>
-                <h2 class="heading">Bundles</h2>
-                <div class="line"></div>
-            </div>
-            <ul class="products">
-                <li class="products-item">
-                    <a href="./hoodie.html">
-                        <img
-                            class="products-img"
-                            src="../assets/images/immi-hoodie.png"
-                            alt=""
-                        />
-                        <p class="products-title">Clean slate hoodie</p>
-                        <p class="products-price">120 EUR</p>
-                    </a>
-                </li>
-                <li class="products-item">
-                    <a href="./longsleeve.html">
-                        <img
-                            class="products-img"
-                            src="../assets/images/immi-longsleeve.png"
-                            alt=""
-                        />
-                        <p class="products-title">Clean slate long sleeve</p>
-                        <p class="products-price">60 EUR</p>
-                    </a>
-                </li>
-                <li class="products-item">
-                    <a href="./product.html">
-                        <img
-                            class="products-img"
-                            src="../assets/images/immi-pants.png"
-                            alt=""
-                        />
-                        <p class="products-title">Clean slate sweatpants</p>
-                        <p class="products-price">120 EUR</p>
-                    </a>
-                </li>
-            </ul>
+		<main class="product-container">
+			<div class="product-page">
+				<div class="product-info">
+					<h2 class="product-info_heading">IMMIGRNT</h2>
+					<p class="product-info_desc">Clean slate hoodie</p>
+					<ul>
+						<li>Button tab at spread collar</li>
+						<li>Two-way zip closure with button placket</li>
+						<li>Elasticized hem and cuffs</li>
+						<li>Dropped shoulders</li>
+						<li>Welt pocket at interior</li>
+						<li>Full quilted cotton</li>
+					</ul>
+					<p>Color: White</p>
+					<p>Fabric: 100% cotton</p>
+					<p>Made in Poland</p>
+				</div>
+
+				<div class="product-slider product-image">
+					<div class="prev" onclick="changeSlide(-1)">
+						<img src="../assets/icons/left-arrow.svg" alt="Previous">
+					</div>
+					<div class="slider">
+						<img src="../assets/images/product-hoodie.png" alt="Clean slate hoodie">
+						<img src="../assets/images/product-hoodie.png" alt="Clean slate hoodie">
+						<img src="../assets/images/product-hoodie.png" alt="Clean slate hoodie">
+					</div>
+					<div class="next" onclick="changeSlide(1)">
+						<img src="../assets/icons/right-arrow.svg" alt="Next">
+					</div>
+				</div>
+
+				<div class="purchase-info">
+					<div class="price">
+						<p>$120</p>
+						<span>Tax included</span>
+					</div>
+					<select>
+						<option>Select a size</option>
+						<option>Small</option>
+						<option>Medium</option>
+						<option>Large</option>
+					</select>
+					<div id="product-component-1740233808512"></div>
+					<div class="model-info">
+						<p>Model is 186 cm and wears size S</p>
+						<a href="#">Measurements</a>
+					</div>
+				</div>
+			</div>
+
 		</main>
 		<footer>
 			<p>© 2025 immigrnt. All right reserved.</p>
 		</footer>
 	</body>
 	<script defer src="../scripts/script.js"></script>
+	<!-- Hoodie -->
 	<script type="text/javascript">
 		/*<![CDATA[*/
 		(function () {
@@ -150,18 +128,48 @@
 				).appendChild(script);
 				script.onload = ShopifyBuyInit;
 			}
-
 			function ShopifyBuyInit() {
 				var client = ShopifyBuy.buildClient({
 					domain: "a7cpqd-t6.myshopify.com",
 					storefrontAccessToken: "499807ad1d9398ef053c159d436b2a71",
 				});
 				ShopifyBuy.UI.onReady(client).then(function (ui) {
-					ui.createComponent("cart", {
-						id: "15033473204611",
+					ui.createComponent("product", {
+						id: "15033466782083",
+						node: document.getElementById(
+							"product-component-1740233808512"
+						),
 						toggles: [{ node: document.getElementById("cart-toggle") }],
 						moneyFormat: "%E2%82%AC%7B%7Bamount_with_comma_separator%7D%7D",
 						options: {
+							product: {
+								styles: {
+									"max-width": "100%",
+									button: {
+										width: "100%",
+										":hover": {
+											"background-color": "#e6e6e6",
+										},
+										"background-color": "#000000",
+										":focus": {
+											"background-color": "#e6e6e6",
+										},
+									},
+								},
+								layout: "horizontal",
+								contents: {
+									img: false,
+									imgWithCarousel: false,
+									description: false,
+									title: false,
+									price: false,
+									description: false,
+									options: false,
+								},
+								text: {
+									button: "Add to bag",
+								},
+							},
 							toggle: {
 								sticky: false,
 								iframe: false,
@@ -247,4 +255,3 @@
 		/*]]>*/
 	</script>
 </html>
-	
