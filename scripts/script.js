@@ -31,13 +31,40 @@ document.addEventListener("DOMContentLoaded", function () {
 	});
 });
 
-let currentIndex = 0;
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slider-container img');
+const maxSlides = slides.length;
 
 function changeSlide(direction) {
-    const slider = document.querySelector(".slider");
-    const images = document.querySelectorAll(".slider img");
-    const totalSlides = images.length;
-    
-    currentIndex = (currentIndex + direction + totalSlides) % totalSlides;
-    slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+    currentSlide = (currentSlide + direction + maxSlides) % maxSlides;
+    const container = document.querySelector('.slider-container');
+    container.style.transform = `translateX(-${currentSlide * 100}%)`;
 }
+
+// ...existing code...
+
+// Modal functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('measurementsModal');
+    const modalTrigger = document.getElementById('modal-window');
+    const closeButton = document.querySelector('.modal-close');
+
+    modalTrigger.addEventListener('click', function(e) {
+        e.preventDefault();
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+    });
+
+    closeButton.addEventListener('click', function() {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto'; // Restore scrolling
+    });
+
+    // Close modal when clicking outside
+    window.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+});

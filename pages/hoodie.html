@@ -8,9 +8,11 @@
 		<style>
 			.shopify-buy--visually-hidden { display:none!important; }
 			.shopify-buy-frame, .shopify-buy__cart-toggle { padding:0px!important; margin:0px!important; display:inline!important; height:auto!important;line-height:1px!important;top:0!important;bottom:0!important; border-radius:0px!important }
-			/* @media (min-width: 500px) {
-				.shopify-buy__btn-wrapper {margin: 0px !important;}
-			} */
+			@media screen and (max-width: 680px) {				
+				.shopify-buy__layout-horizontal:not(.no-image) .shopify-buy__product__variant-selectors {
+					margin-left: 0px !important;
+				}
+			}
 		</style>
 	</head>
 	<body>
@@ -69,9 +71,11 @@
 						<img src="../assets/icons/left-arrow.svg" alt="Previous">
 					</div>
 					<div class="slider">
-						<img src="../assets/images/product-hoodie.png" alt="Clean slate hoodie">
-						<img src="../assets/images/product-hoodie.png" alt="Clean slate hoodie">
-						<img src="../assets/images/product-hoodie.png" alt="Clean slate hoodie">
+						<div class="slider-container">
+							<img src="../assets/images/product-hoodie.png" alt="Clean slate hoodie">
+							<img src="../assets/images/product-hoodie.png" alt="Clean slate hoodie">
+							<img src="../assets/images/product-hoodie.png" alt="Clean slate hoodie">
+						</div>
 					</div>
 					<div class="next" onclick="changeSlide(1)">
 						<img src="../assets/icons/right-arrow.svg" alt="Next">
@@ -92,7 +96,7 @@
 					<div id="product-component-1740233808512"></div>
 					<div class="model-info">
 						<p>Model is 186 cm and wears size S</p>
-						<a href="#">Measurements</a>
+						<a id="modal-window" href="#">Measurements</a>
 					</div>
 				</div>
 			</div>
@@ -101,6 +105,48 @@
 		<footer>
 			<p>© 2025 immigrnt. All right reserved.</p>
 		</footer>
+		<div class="modal" id="measurementsModal">
+			<div class="modal-content">
+				<h2>Clean Slate hoodie measurements</h2>
+				<button class="modal-close"><img src="../assets/icons/close.svg" alt="Close buttton"></button>
+				<div class="measurements">
+					<h3>1 = XS/S   2=M   3=L/XL </h2>
+					<table class="measurements-table">
+						<tr>
+							<th>size</th>
+							<th>1</th>
+							<th>2</th>
+							<th>3</th>
+						</tr>
+						<tr>
+							<td>length</td>
+							<td>112cm</td>
+							<td>70cm</td>
+							<td>62cm</td>
+						</tr>
+						<tr>
+							<td>shoulders</td>
+							<td>116cm</td>
+							<td>72cm</td>
+							<td>63cm</td>
+						</tr>
+						<tr>
+							<td>sleeve</td>
+							<td>120cm</td>
+							<td>74cm</td>
+							<td>64cm</td>
+						</tr>
+						<tr>
+							<td>collar</td>
+							<td>120cm</td>
+							<td>74cm</td>
+							<td>64cm</td>
+						</tr>
+					</table>
+					<p>Measurements in cm*</p>
+				</div>
+			</div>
+		</div>
 	</body>
 	<script defer src="../scripts/script.js"></script>
 	<!-- Hoodie -->
@@ -146,15 +192,23 @@
 								styles: {
 									"max-width": "100%",
 									button: {
-										width: "100%",
-										":hover": {
-											"background-color": "#e6e6e6",
-										},
-										"background-color": "#000000",
-										":focus": {
-											"background-color": "#e6e6e6",
-										},
-									},
+												"text-transform": "uppercase !important",
+												width: "100%",
+												":hover": {
+													"background-color": "#ffffff",
+													"color": "#000000",
+													"border": "1px solid #000000",
+													padding: "10px",
+												},
+												"background-color": "#000000",
+												":focus": {
+													"background-color": "#ffffff",
+													"color": "#000000",
+												},
+											},
+									buttonWrapper: {
+										"margin-left": "0px !important",
+									}
 								},
 								layout: "horizontal",
 								contents: {

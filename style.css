@@ -170,39 +170,51 @@ li {
 	font-size: 14px;
 }
 
+.product-info > :last-child {
+    margin-bottom: 125px;
+}
+
+
 .product-slider {
     position: relative;
-    max-width: 400px; /* Adjust size as needed */
+    max-width: 400px;
     margin: auto;
-    overflow: hidden;
-	display: flex;
+    display: flex;
+    align-items: center;
 }
 
 .slider {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
+    width: 100%;
+    overflow: hidden;
 }
 
-.slider img {
+.slider-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+}
+
+.slider-container img {
     width: 100%;
     flex-shrink: 0;
 }
 
 .prev, .next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+	position: absolute;
     cursor: pointer;
-    width: 15px; /* Adjust icon size */
+    width: 15px;
     height: 27px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .prev {
-    left: 10px;
+	left: -60px;
 }
 
 .next {
-    right: 10px;
+	right: -60px;
 }
 
 .prev img, .next img {
@@ -343,7 +355,7 @@ footer p {
 	background: none;
 	border: none;
 	cursor: pointer;
-	z-index: 100;
+	z-index: 10000;
 	width: 32px;
 	height: 32px;
 	display: none; /* Hidden by default */
@@ -380,6 +392,70 @@ body.menu-open {
 	padding-right: 64px;
 }
 
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+	font-family: "Spartan-Regular";
+	text-transform: uppercase;
+	font-size: 10px;
+	letter-spacing: 1px;
+}
+
+.modal-content {
+    position: relative;
+    background-color: #ffffff;
+    margin: 15% auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 800px;
+}
+
+.modal-close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-weight: bold;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.modal-close img{
+	width: 25px;
+	height: 25px;
+}
+
+.measurements {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	margin: 30px 150px;
+}
+
+.measurements-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.measurements-table th,
+.measurements-table td {
+    border: 1px solid #000;
+    padding: 22px;
+    text-align: center;
+}
+
+.measurements-table th {
+    background-color: #f5f5f5;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+
 @media (min-width: 1200px) {
 	.products {
 		gap: 272px;
@@ -414,7 +490,7 @@ body.menu-open {
 		left: 0;
 		width: 100%;
 		height: 100vh; /* Full viewport height */
-		background: #f9f5ef; /* Light background */
+		background: #ffffff; /* Light background */
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -430,6 +506,7 @@ body.menu-open {
 		opacity: 0.95;
 		visibility: visible;
 		gap: 36px;
+		z-index: 1000;
 	}
 	
 	.logo {
@@ -464,6 +541,10 @@ body.menu-open {
 		width: 100%;
 		font-size: 16px;
 	}
+
+	.product-info > :last-child {
+        margin-bottom: 0;
+    }
 	
 	.purchase-info {
 		display: flex;
@@ -607,4 +688,37 @@ body.menu-open {
 
 .model-info a {
 	letter-spacing: 1%;
+}
+
+
+.soon {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	margin: 0;
+	font-family: sans-serif;
+	text-align: center;
+	font-family: "Spartan-Light";
+}
+.soon h1 {
+	font-size: 80px;
+	margin: 0;
+	letter-spacing: 2px;
+}
+.soon p {
+	font-size: 20px;
+	margin: 15px 0 40px;
+}
+.soon div {
+	position: absolute;
+	bottom: 20px;
+	font-size: 0.8rem;
+	height: 25px;
+}
+
+.soon div img {
+	width: 100%;
+	height: 100%;
 }
