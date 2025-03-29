@@ -456,6 +456,38 @@ body.menu-open {
     text-transform: uppercase;
 }
 
+.soon {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	margin: 0;
+	font-family: sans-serif;
+	text-align: center;
+	font-family: "Spartan-Light";
+}
+.soon_heading {
+	font-size: 80px;
+	margin: 0;
+	letter-spacing: 2px;
+}
+.soon p {
+	font-size: 20px;
+	margin: 15px 0 40px;
+}
+.soon div {
+	position: absolute;
+	bottom: 20px;
+	font-size: 0.8rem;
+	height: 25px;
+}
+
+.soon div img {
+	width: 100%;
+	height: 100%;
+}
+
 @media (min-width: 1200px) {
 	.products {
 		gap: 272px;
@@ -684,6 +716,18 @@ body.menu-open {
 		width: 210px;
 		height: 51px;
 	}
+
+	.soon_heading {
+		font-size: 34px;
+	}
+	.soon p {
+		font-size: 15px;
+		margin: 15px 0 40px;
+	}
+
+	.soon div {
+		height: 18px;
+	}
 }
 
 .model-info a {
@@ -691,34 +735,3 @@ body.menu-open {
 }
 
 
-.soon {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
-	margin: 0;
-	font-family: sans-serif;
-	text-align: center;
-	font-family: "Spartan-Light";
-}
-.soon h1 {
-	font-size: 80px;
-	margin: 0;
-	letter-spacing: 2px;
-}
-.soon p {
-	font-size: 20px;
-	margin: 15px 0 40px;
-}
-.soon div {
-	position: absolute;
-	bottom: 20px;
-	font-size: 0.8rem;
-	height: 25px;
-}
-
-.soon div img {
-	width: 100%;
-	height: 100%;
-}
