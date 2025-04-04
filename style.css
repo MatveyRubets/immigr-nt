@@ -971,6 +971,14 @@ footer a {
     .tnc-section li {
         font-size: 10px;
     }
+
+	.shipping-info {
+		font-size: 10px;
+	}
+
+	footer p{
+		font-size: 9px;
+	}
 }
 
 .model-info a {
