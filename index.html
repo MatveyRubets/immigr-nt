@@ -14,13 +14,13 @@
 		</style>
 	</head>
 	<body>
-		<section class="soon">
+		<!-- <section class="soon">
 			<h1 class="soon_heading">SORRY 5 DA WAIT</h1>
 			<p>THIS FRIDAY?</p>
 			<div><img src="./assets/icons/immigrnt.svg" alt=""></div>
-		</section>
+		</section> -->
 
-		<!-- <header class="header-container">
+		<header class="header-container">
 			<nav class="navbar">
 				<button class="burger-menu" id="burger-menu">
 					<img src="./assets/icons/burger.svg" alt="Menu" />
@@ -53,6 +53,7 @@
 			</nav>
 		</header>
 		<main>
+			<h3 class="sales-heading">DAY 1 SALE. ONLY FOR 48HRS</h3>
 			<ul class="products">
 				<li class="products-item">
 					<a href="./pages/hoodie.html">
@@ -62,7 +63,8 @@
 							alt=""
 						/>
 						<p class="products-title">Clean slate hoodie</p>
-						<p class="products-price">120 EUR</p>
+						<p class="products-price-discount">€139</p>
+						<p class="products-price">€109</p>
 					</a>
 				</li>
 				<li class="products-item">
@@ -73,7 +75,8 @@
 							alt=""
 						/>
 						<p class="products-title">Clean slate long sleeve</p>
-						<p class="products-price">60 EUR</p>
+						<p class="products-price-discount">€79</p>
+						<p class="products-price">€59</p>
 					</a>
 				</li>
 				<li class="products-item">
@@ -84,7 +87,8 @@
 							alt=""
 						/>
 						<p class="products-title">Clean slate sweatpants</p>
-						<p class="products-price">120 EUR</p>
+						<p class="products-price-discount">€139</p>
+						<p class="products-price">€109</p>
 					</a>
 				</li>
 			</ul>
@@ -95,45 +99,48 @@
             </div>
             <ul class="products products-bundles">
                 <li class="products-item">
-                    <a href="./pages/hoodie.html">
+                    <a href="./pages/full-bundle.html">
                         <img
                             class="products-img"
                             src="./assets/images/full-bundle.png"
                            	alt=""
                         />
                         <p class="products-title">FULL BUNDLE</p>
-                        <p class="products-price">120 EUR</p>
+						<p class="products-price-discount">€357</p>
+                        <p class="products-price">€269</p>
                     </a>
                 </li>
                 <li class="products-item">
-                    <a href="./pages/longsleeve.html">
+                    <a href="./pages/ls-sw.html">
                         <img
                             class="products-img"
                             src="./assets/images/ls+sw.png"
                             alt=""
                         />
-                        <p class="products-title">LS + SW</p>
-                        <p class="products-price">60 EUR</p>
+                        <p class="products-title">LONG SLEEVE + SWEATPANTS BUNDLE</p>
+						<p class="products-price-discount">€218</p>
+                        <p class="products-price">€179</p>
                     </a>
                 </li>
                 <li class="products-item">
-                    <a href="./pages/product.html">
+                    <a href="./pages/hoodie-sw.html">
                         <img
                             class="products-img"
                             src="./assets/images/hoodie+sw.png"
                             alt=""
                         />
-                        <p class="products-title">HOODIE + SW</p>
-                        <p class="products-price">120 EUR</p>
+                        <p class="products-title">HOODIE + SWEATPANTS BUNDLE</p>
+						<p class="products-price-discount">€278</p>
+                        <p class="products-price">€219</p>
                     </a>
                 </li>
             </ul>
 		</main>
 		<footer>
-			<p>© 2025 immigrnt. All right reserved.</p>
-		</footer>  -->
+			<p>© 2025 immigrnt. All rights reserved. <a href="./pages/tnc.html">Terms & Conditions.</a></p>
+		</footer> 
 	</body>
-	<!-- <script defer src="./scripts/script.js"></script>
+	<script defer src="./scripts/script.js"></script>
 	<script type="text/javascript">
 		/*<![CDATA[*/
 		(function () {
@@ -179,79 +186,73 @@
 								},
 							},
 							cart: {
-								styles: {
-									button: {
-										":hover": {
-											"background-color": "#cd2b2b",
+										styles: {
+											button: {
+												":hover": {
+													color: "#222222",
+													"background-color": "#fff",
+													border: "1px solid #222222",
+
+												},
+												"background-color": "#222222",
+											},
+											title: {
+												color: "#252525",
+											},
+											header: {
+												color: "#252525",
+											},
+											lineItems: {
+												color: "#252525",
+											},
+											subtotalText: {
+												color: "#252525",
+											},
+											subtotal: {
+												color: "#252525",
+											},
+											notice: {
+												color: "#252525",
+											},
+											currency: {
+												color: "#252525",
+											},
+											close: {
+												color: "#252525",
+												":hover": {
+													color: "#252525",
+												},
+											},
+											empty: {
+												color: "#252525",
+											},
+											noteDescription: {
+												color: "#252525",
+											},
+											discountText: {
+												color: "#252525",
+											},
+											discountIcon: {
+												fill: "#252525",
+											},
+											discountAmount: {
+												color: "#252525",
+											},
 										},
-										"background-color": "#e43030",
-										":focus": {
-											"background-color": "#cd2b2b",
+										text: {
+											title: "CART",
+											total: "TOTAL",
+											empty: "BUY SUM!",
+											notice: "",
+											button: "TO CHECKOUT!",
 										},
+										popup: false,
 									},
-									title: {
-										color: "#252525",
-									},
-									header: {
-										color: "#252525",
-									},
-									lineItems: {
-										color: "#252525",
-									},
-									subtotalText: {
-										color: "#252525",
-									},
-									subtotal: {
-										color: "#252525",
-									},
-									notice: {
-										color: "#252525",
-									},
-									currency: {
-										color: "#252525",
-									},
-									close: {
-										color: "#252525",
-										":hover": {
-											color: "#252525",
-										},
-									},
-									empty: {
-										color: "#252525",
-									},
-									noteDescription: {
-										color: "#252525",
-									},
-									discountText: {
-										color: "#252525",
-									},
-									discountIcon: {
-										fill: "#252525",
-									},
-									discountAmount: {
-										color: "#252525",
-									},
-									cart: {
-										"background-color": "#fffaf4",
-									},
-									footer: {
-										"background-color": "#fffaf4",
-									},
-								},
-								text: {
-									title: "CART",
-									total: "TOTAL",
-									empty: "BUY SUM!",
-									notice: "",
-									button: "TO CHECKOUT!",
-								},
-								popup: false,
-							},
 						},
 					});
 				});
 			}
 		})();
 		/*]]>*/
-	</script>  -->
+	</script> 
 </html>

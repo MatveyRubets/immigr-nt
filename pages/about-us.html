@@ -11,6 +11,11 @@
 			href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap"
 			rel="stylesheet"
 		/>
+		<style>
+			.shopify-buy--visually-hidden { display:none!important; }
+			.shopify-buy-frame, .shopify-buy__cart-toggle { padding:0px!important; margin:0px!important; display:inline!important; height:auto!important;line-height:1px!important;top:0!important;bottom:0!important; border-radius:0px!important; overflow:visible!important; }
+			
+		</style>
 	</head>
 	<body>
 		<header class="header-container">
@@ -35,6 +40,9 @@
 					</li>
 					<li class="nav-item">
 						<a href="https://www.instagram.com/immigr.nt/">instagram</a>
+					</li>
+					<li class="nav-item">
+						<a href="#" id="cart-toggle" class="nav-item"></a>
 					</li>
 				</ul>
 				<a  href="../index.html">
@@ -78,7 +86,121 @@
 			</div>
 		</main>
 		<footer>
-			<p>© 2025 immigrnt. All right reserved.</p>
-		</footer>
+			<p>© 2025 immigrnt. All rights reserved. <a href="./tnc.html">Terms & Conditions.</a></p>
+		</footer> 
 	</body>
+	<script type="text/javascript">
+		/*<![CDATA[*/
+		(function () {
+			var scriptURL =
+				"https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js";
+			if (window.ShopifyBuy) {
+				if (window.ShopifyBuy.UI) {
+					ShopifyBuyInit();
+				} else {
+					loadScript();
+				}
+			} else {
+				loadScript();
+			}
+			function loadScript() {
+				var script = document.createElement("script");
+				script.async = true;
+				script.src = scriptURL;
+				(
+					document.getElementsByTagName("head")[0] ||
+					document.getElementsByTagName("body")[0]
+				).appendChild(script);
+				script.onload = ShopifyBuyInit;
+			}
+
+			function ShopifyBuyInit() {
+				var client = ShopifyBuy.buildClient({
+					domain: "a7cpqd-t6.myshopify.com",
+					storefrontAccessToken: "499807ad1d9398ef053c159d436b2a71",
+				});
+				ShopifyBuy.UI.onReady(client).then(function (ui) {
+					ui.createComponent("cart", {
+						id: "15033473204611",
+						toggles: [{ node: document.getElementById("cart-toggle") }],
+						moneyFormat: "%E2%82%AC%7B%7Bamount_with_comma_separator%7D%7D",
+						options: {
+							toggle: {
+								sticky: false,
+								iframe: false,
+								"templates":{
+									icon: '',
+									count: '<span class="{{data.classes.toggle.count}}" data-element="toggle.count">cart ({{data.count}})</span>',
+								},
+							},
+							cart: {
+										styles: {
+											button: {
+												":hover": {
+													color: "#222222",
+													"background-color": "#fff",
+													border: "1px solid #222222",
+
+												},
+												"background-color": "#222222",
+											},
+											title: {
+												color: "#252525",
+											},
+											header: {
+												color: "#252525",
+											},
+											lineItems: {
+												color: "#252525",
+											},
+											subtotalText: {
+												color: "#252525",
+											},
+											subtotal: {
+												color: "#252525",
+											},
+											notice: {
+												color: "#252525",
+											},
+											currency: {
+												color: "#252525",
+											},
+											close: {
+												color: "#252525",
+												":hover": {
+													color: "#252525",
+												},
+											},
+											empty: {
+												color: "#252525",
+											},
+											noteDescription: {
+												color: "#252525",
+											},
+											discountText: {
+												color: "#252525",
+											},
+											discountIcon: {
+												fill: "#252525",
+											},
+											discountAmount: {
+												color: "#252525",
+											},
+										},
+										text: {
+											title: "CART",
+											total: "TOTAL",
+											empty: "BUY SUM!",
+											notice: "",
+											button: "TO CHECKOUT!",
+										},
+										popup: false,
+									},
+						},
+					});
+				});
+			}
+		})();
+		/*]]>*/
+	</script> 
 </html>

@@ -72,6 +72,7 @@
 							<img src="../assets/images/sw-page-2.png" alt="Clean slate sweatpants">
 							<img src="../assets/images/sw-page-3.png" alt="Clean slate sweatpants">
 							<img src="../assets/images/sw-page-4.png" alt="Clean slate sweatpants">
+							<img src="../assets/images/sw-page-5.png" alt="Clean slate sweatpants">
 						</div>
 					</div>
 					<div class="next" onclick="changeSlide(1)">
@@ -81,12 +82,15 @@
 
 				<div class="purchase-info">
 					<div class="price">
-						<p>$120</p>
+						<div class="price-discount">
+							<p>€109</p>
+							<p>€139</p>
+						</div>
 						<span>Tax included</span>
 					</div>
-					<div id="product-component-1740511096089"></div>
+					<div id="product-component-1743620060145"></div>
 					<div class="model-info">
-						<p>Model is 186 cm and wears size S</p>
+						<p>Model is 180 cm and wears size 1</p>
 						<a id="modal-window" href="#">Measurements</a>
 					</div>
 				</div>
@@ -94,11 +98,11 @@
 
 		</main>
 		<footer>
-			<p>© 2025 immigrnt. All right reserved.</p>
-		</footer>
+			<p>© 2025 immigrnt. All rights reserved. <a href="./tnc.html">Terms & Conditions.</a></p>
+		</footer> 
 		<div class="modal" id="measurementsModal">
 			<div class="modal-content">
-				<h2>Clean Slate hoodie measurements</h2>
+				<h2>Clean Slate sweatpants measurements</h2>
 				<button class="modal-close"><img src="../assets/icons/close.svg" alt="Close buttton"></button>
 				<div class="measurements">
 					<h3>1 = XS/S   2=M   3=L/XL </h2>
@@ -111,27 +115,27 @@
 						</tr>
 						<tr>
 							<td>length</td>
-							<td>112cm</td>
-							<td>70cm</td>
-							<td>62cm</td>
+							<td>100</td>
+							<td>108</td>
+							<td>112</td>
 						</tr>
 						<tr>
-							<td>shoulders</td>
-							<td>116cm</td>
-							<td>72cm</td>
-							<td>63cm</td>
+							<td>Waist</td>
+							<td>29-41</td>
+							<td>30-42</td>
+							<td>40-52</td>
 						</tr>
 						<tr>
-							<td>sleeve</td>
-							<td>120cm</td>
-							<td>74cm</td>
-							<td>64cm</td>
+							<td>hips</td>
+							<td>49</td>
+							<td>50</td>
+							<td>55</td>
 						</tr>
 						<tr>
-							<td>collar</td>
-							<td>120cm</td>
-							<td>74cm</td>
-							<td>64cm</td>
+							<td>leg opening</td>
+							<td>34</td>
+							<td>35</td>
+							<td>36</td>
 						</tr>
 					</table>
 					<p>Measurements in cm*</p>
@@ -172,9 +176,9 @@
 						});
 						ShopifyBuy.UI.onReady(client).then(function (ui) {
 							ui.createComponent("product", {
-								id: "15033473204611",
+								id: "15076091199875",
 								node: document.getElementById(
-									"product-component-1740511096089"
+									"product-component-1743620060145"
 								),
 								toggles: [{ node: document.getElementById("cart-toggle") }],
 								moneyFormat: "%E2%82%AC%7B%7Bamount_with_comma_separator%7D%7D",

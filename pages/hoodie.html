@@ -85,18 +85,15 @@
 
 				<div class="purchase-info">
 					<div class="price">
-						<p>$120</p>
+						<div class="price-discount">
+							<p>€109</p>
+							<p>€139</p>
+						</div>
 						<span>Tax included</span>
 					</div>
-					<select>
-						<option>Select a size</option>
-						<option>Small</option>
-						<option>Medium</option>
-						<option>Large</option>
-					</select>
 					<div id="product-component-1740233808512"></div>
 					<div class="model-info">
-						<p>Model is 186 cm and wears size S</p>
+						<p>Model is 180 cm and wears size 1</p>
 						<a id="modal-window" href="#">Measurements</a>
 					</div>
 				</div>
@@ -104,11 +101,11 @@
 
 		</main>
 		<footer>
-			<p>© 2025 immigrnt. All right reserved.</p>
-		</footer>
+			<p>© 2025 immigrnt. All rights reserved. <a href="./tnc.html">Terms & Conditions.</a></p>
+		</footer> 
 		<div class="modal" id="measurementsModal">
 			<div class="modal-content">
-				<h2>Clean Slate hoodie measurements</h2>
+				<h2>Clean Slate Hoodie measurements</h2>
 				<button class="modal-close"><img src="../assets/icons/close.svg" alt="Close buttton"></button>
 				<div class="measurements">
 					<h3>1 = XS/S   2=M   3=L/XL </h2>
@@ -121,27 +118,27 @@
 						</tr>
 						<tr>
 							<td>length</td>
-							<td>112cm</td>
-							<td>70cm</td>
-							<td>62cm</td>
+							<td>56</td>
+							<td>58</td>
+							<td>62</td>
 						</tr>
 						<tr>
 							<td>shoulders</td>
-							<td>116cm</td>
-							<td>72cm</td>
-							<td>63cm</td>
+							<td>48</td>
+							<td>50</td>
+							<td>55</td>
 						</tr>
 						<tr>
 							<td>sleeve</td>
-							<td>120cm</td>
-							<td>74cm</td>
-							<td>64cm</td>
+							<td>68</td>
+							<td>70</td>
+							<td>62</td>
 						</tr>
 						<tr>
 							<td>collar</td>
-							<td>120cm</td>
-							<td>74cm</td>
-							<td>64cm</td>
+							<td>16</td>
+							<td>17</td>
+							<td>18</td>
 						</tr>
 					</table>
 					<p>Measurements in cm*</p>
@@ -151,162 +148,159 @@
 	</body>
 	<script defer src="../scripts/script.js"></script>
 	<!-- Hoodie -->
-	<script type="text/javascript">
-		/*<![CDATA[*/
-		(function () {
-			var scriptURL =
-				"https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js";
-			if (window.ShopifyBuy) {
-				if (window.ShopifyBuy.UI) {
-					ShopifyBuyInit();
+		<script type="text/javascript">
+			/*<![CDATA[*/
+			(function () {
+				var scriptURL =
+					"https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js";
+				if (window.ShopifyBuy) {
+					if (window.ShopifyBuy.UI) {
+						ShopifyBuyInit();
+					} else {
+						loadScript();
+					}
 				} else {
 					loadScript();
 				}
-			} else {
-				loadScript();
-			}
-			function loadScript() {
-				var script = document.createElement("script");
-				script.async = true;
-				script.src = scriptURL;
-				(
-					document.getElementsByTagName("head")[0] ||
-					document.getElementsByTagName("body")[0]
-				).appendChild(script);
-				script.onload = ShopifyBuyInit;
-			}
-			function ShopifyBuyInit() {
-				var client = ShopifyBuy.buildClient({
-					domain: "a7cpqd-t6.myshopify.com",
-					storefrontAccessToken: "499807ad1d9398ef053c159d436b2a71",
-				});
-				ShopifyBuy.UI.onReady(client).then(function (ui) {
-					ui.createComponent("product", {
-						id: "15033466782083",
-						node: document.getElementById(
-							"product-component-1740233808512"
-						),
-						toggles: [{ node: document.getElementById("cart-toggle") }],
-						moneyFormat: "%E2%82%AC%7B%7Bamount_with_comma_separator%7D%7D",
-						options: {
-							product: {
-								styles: {
-									"max-width": "100%",
-									button: {
-												"text-transform": "uppercase !important",
-												width: "100%",
-												":hover": {
-													"background-color": "#ffffff",
-													"color": "#000000",
-													"border": "1px solid #000000",
-													padding: "10px",
-												},
-												"background-color": "#000000",
-												":focus": {
-													"background-color": "#ffffff",
-													"color": "#000000",
-												},
+				function loadScript() {
+					var script = document.createElement("script");
+					script.async = true;
+					script.src = scriptURL;
+					(
+						document.getElementsByTagName("head")[0] ||
+						document.getElementsByTagName("body")[0]
+					).appendChild(script);
+					script.onload = ShopifyBuyInit;
+				}
+				function ShopifyBuyInit() {
+					var client = ShopifyBuy.buildClient({
+						domain: "a7cpqd-t6.myshopify.com",
+						storefrontAccessToken: "499807ad1d9398ef053c159d436b2a71",
+					});
+					ShopifyBuy.UI.onReady(client).then(function (ui) {
+						ui.createComponent("product", {
+							id: "15033466782083",
+							node: document.getElementById(
+								"product-component-1740233808512"
+							),
+							toggles: [{ node: document.getElementById("cart-toggle") }],
+							moneyFormat: "%E2%82%AC%7B%7Bamount_with_comma_separator%7D%7D",
+							options: {
+								product: {
+									styles: {
+										display: "flex",
+										button: {
+											"text-transform": "uppercase !important",
+											width: "100%",
+											":hover": {
+												"background-color": "#ffffff",
+												"color": "#000000",
 											},
-									buttonWrapper: {
-										"margin-left": "0px !important",
-									}
-								},
-								layout: "horizontal",
-								contents: {
-									img: false,
-									imgWithCarousel: false,
-									description: false,
-									title: false,
-									price: false,
-									description: false,
-									options: false,
-								},
-								text: {
-									button: "Add to bag",
-								},
-							},
-							toggle: {
-								sticky: false,
-								iframe: false,
-								"templates":{
-									icon: '',
-									count: '<span class="{{data.classes.toggle.count}}" data-element="toggle.count">cart ({{data.count}})</span>',
-								},
-							},
-							cart: {
-								styles: {
-									button: {
-										":hover": {
-											"background-color": "#cd2b2b",
+											"background-color": "#000000",
+											padding: "10px",
+											"border": "1px solid #000000",
+											":focus": {
+												"background-color": "#ffffff",
+												"color": "#000000",
+											},
 										},
-										"background-color": "#e43030",
-										":focus": {
-											"background-color": "#cd2b2b",
+										buttonWrapper: {
+											"margin-left": "0px !important",
+										},
+										options: {
+											"margin-left": "0px !important",
 										},
 									},
-									title: {
-										color: "#252525",
+									layout: "horizontal",
+									contents: {
+										img: false,
+										imgWithCarousel: false,
+										description: false,
+										title: false,
+										price: false,
+										description: false,
+										options: true,
 									},
-									header: {
-										color: "#252525",
+									text: {
+										button: "Add to bag",
 									},
-									lineItems: {
-										color: "#252525",
+								},
+								toggle: {
+									sticky: false,
+									iframe: false,
+									"templates":{
+										icon: '',
+										count: '<span class="{{data.classes.toggle.count}}" data-element="toggle.count">cart ({{data.count}})</span>',
 									},
-									subtotalText: {
-										color: "#252525",
-									},
-									subtotal: {
-										color: "#252525",
-									},
-									notice: {
-										color: "#252525",
-									},
-									currency: {
-										color: "#252525",
-									},
-									close: {
-										color: "#252525",
-										":hover": {
+								},
+								cart: {
+									styles: {
+										button: {
+											":hover": {
+												color: "#222222",
+												"background-color": "#fff",
+												border: "1px solid #222222",
+
+											},
+											"background-color": "#222222",
+										},
+										title: {
+											color: "#252525",
+										},
+										header: {
+											color: "#252525",
+										},
+										lineItems: {
+											color: "#252525",
+										},
+										subtotalText: {
+											color: "#252525",
+										},
+										subtotal: {
+											color: "#252525",
+										},
+										notice: {
+											color: "#252525",
+										},
+										currency: {
+											color: "#252525",
+										},
+										close: {
+											color: "#252525",
+											":hover": {
+												color: "#252525",
+											},
+										},
+										empty: {
+											color: "#252525",
+										},
+										noteDescription: {
+											color: "#252525",
+										},
+										discountText: {
+											color: "#252525",
+										},
+										discountIcon: {
+											fill: "#252525",
+										},
+										discountAmount: {
 											color: "#252525",
 										},
 									},
-									empty: {
-										color: "#252525",
+									text: {
+										title: "CART",
+										total: "TOTAL",
+										empty: "BUY SUM!",
+										notice: "",
+										button: "TO CHECKOUT!",
 									},
-									noteDescription: {
-										color: "#252525",
-									},
-									discountText: {
-										color: "#252525",
-									},
-									discountIcon: {
-										fill: "#252525",
-									},
-									discountAmount: {
-										color: "#252525",
-									},
-									cart: {
-										"background-color": "#fffaf4",
-									},
-									footer: {
-										"background-color": "#fffaf4",
-									},
+									popup: false,
 								},
-								text: {
-									title: "CART",
-									total: "TOTAL",
-									empty: "BUY SUM!",
-									notice: "",
-									button: "TO CHECKOUT!",
-								},
-								popup: false,
 							},
-						},
+						});
 					});
-				});
-			}
-		})();
-		/*]]>*/
-	</script>
+				}
+			})();
+			/*]]>*/
+</script>
 </html>

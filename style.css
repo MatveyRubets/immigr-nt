@@ -34,6 +34,7 @@ body {
 
 main {
 	flex: 1;
+	padding-top: 68px;
 }
 
 a {
@@ -49,8 +50,11 @@ a {
 .navbar {
 	display: flex;
 	justify-content: space-between;
-	margin-left: 22px;
-	position: relative;
+	padding-left: 22px;
+	position: fixed;
+	top: 0;
+    left: 0;
+    width: 100%;
 }
 
 .nav-cart {
@@ -86,7 +90,7 @@ li {
 .products {
 	display: flex;
 	gap: 214px;
-	margin: 93px 66px 93px;
+	margin: 53px 66px 93px;
 	justify-content: center;
 	flex-wrap: wrap;
 }
@@ -116,8 +120,16 @@ li {
 }
 
 .products-price {
-	font-size: 10px;
 	font-family: "Spartan-Bold";
+	font-size: 12px;
+}
+
+.products-price-discount {
+	font-family: "Spartan-Bold";
+	font-size: 10px;
+	margin-bottom: 10px;
+	opacity: 0.61;
+	text-decoration: line-through;
 }
 
 .product-container {
@@ -168,6 +180,9 @@ li {
 	margin-bottom: 5px;
 }
 
+.product-info div {
+	margin-bottom: 62px;
+}
 
 .product-info h2, .product-info p {
 	line-height: 20px;
@@ -177,7 +192,6 @@ li {
 .product-info > :last-child {
     margin-bottom: 125px;
 }
-
 
 .product-slider {
     position: relative;
@@ -201,6 +215,7 @@ li {
 .slider-container img {
     width: 100%;
     flex-shrink: 0;
+	z-index: -1;
 }
 
 .prev, .next {
@@ -211,14 +226,15 @@ li {
     display: flex;
     align-items: center;
     justify-content: center;
+	z-index: -1;
 }
 
 .prev {
-	left: -60px;
+	left: -100px;
 }
 
 .next {
-	right: -60px;
+	right: -100px;
 }
 
 .prev img, .next img {
@@ -250,6 +266,20 @@ li {
 	justify-content: space-between;
 	font-size: 14px;
 	margin-bottom: 10px;
+}
+
+.price-discount {
+	display: flex;
+	gap:5px;
+}
+
+.price-discount p:first-child {
+	font-family: "Spartan-Bold";
+}
+
+.price-discount p:last-child {
+	text-decoration: line-through;
+	opacity: 0.61;
 }
 
 .price span {
@@ -414,7 +444,7 @@ body.menu-open {
 .modal-content {
     position: relative;
     background-color: #ffffff;
-    margin: 15% auto;
+    margin: 4% auto;
     padding: 20px;
     width: 80%;
     max-width: 800px;
@@ -492,6 +522,113 @@ body.menu-open {
 	height: 100%;
 }
 
+.shipping-info {
+	margin-top: 52px;
+	font-size: 14px;
+	font-family: "Spartan-Regular";
+	letter-spacing: 0.5px;
+}
+
+.product-info_details {
+	margin-top: 30px;	
+}
+
+.product-info-bundle {
+	margin-top: 208px;
+}
+
+.product-info-hoodie {
+	margin-top: 78px;
+}
+
+.product-info-longsleeve {
+	margin-top: 25px;
+}
+
+.product-info-bundle > :last-child,
+.product-info-hoodie > :last-child,
+.product-info-longsleeve > :last-child {
+    margin-bottom: 0px;
+}
+
+.products-item a {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.tnc-section {
+    font-family: "Spartan-Regular";
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 0 25px;
+    letter-spacing: 0.5px;
+}
+
+.tnc-section h1 {
+    font-family: "Spartan-Bold";
+    font-size: 25px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+.tnc-section h2 {
+    font-family: "Spartan-Bold";
+    font-size: 16px;
+    margin: 40px 0 20px;
+    text-transform: uppercase;
+}
+
+.tnc-section h3 {
+    font-family: "Spartan-Bold";
+    font-size: 14px;
+    margin: 30px 0 15px;
+}
+
+.tnc-section h4 {
+    font-size: 14px;
+    margin: 20px 0 10px;
+}
+
+.tnc-section p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: #535353;
+}
+
+.tnc-section ul,
+.tnc-section ol {
+    margin: 15px 0;
+    padding-left: 20px;
+}
+
+.tnc-section li {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    color: #535353;
+	list-style: initial;
+}
+
+.tnc-section a {
+    color: #000;
+    text-decoration: underline;
+    text-transform: none;
+}
+
+footer a {
+	text-transform: capitalize;
+}
+
+.sales-heading {
+	margin-top: 25px;
+	font-size: 15px;
+	font-family: "SpaceMono-Regular";
+	text-align: center;
+	text-decoration: underline;
+}
+
 @media (min-width: 1200px) {
 
 	.products {
@@ -517,6 +654,7 @@ body.menu-open {
 	
 	.navbar {
 		align-items: center;
+		z-index: 1000;
 	}
 	.burger-menu {
 		width: 32px;
@@ -565,7 +703,7 @@ body.menu-open {
 	}
 	
 	.products {
-		margin: 55px 45px;
+		margin: 40px 45px;
 		gap: 100px;
 	}
 	
@@ -639,7 +777,35 @@ body.menu-open {
 		display: block;
         margin: 0;
     }
+
+    .tnc-section {
+        margin: 30px auto;
+    }
+
+    .tnc-section h1 {
+        font-size: 20px;
+    }
+
+    .tnc-section h2 {
+        font-size: 14px;
+    }
+
+    .tnc-section h3 {
+        font-size: 12px;
+    }
+
+    .tnc-section h4,
+    .tnc-section p,
+    .tnc-section li {
+        font-size: 12px;
+    }
 	
+	.prev{
+		left: -30px;
+	} 
+	.next {
+		right: -30px;
+	}
 }
 
 /* Responsive Styles */
@@ -662,6 +828,14 @@ body.menu-open {
 	
 	.product-info {
 		margin-top: 30px;
+	}
+
+	.product-info div ul {
+		margin: 20px 0;
+	}
+
+	.product-info div {
+		margin-bottom: 34px;
 	}
 	
 	.price {
@@ -741,6 +915,63 @@ body.menu-open {
 	.products-img {
 		margin-bottom: 35px;
 	}
+
+
+	.modal-content h2{
+		font-size: 12px;
+		margin-bottom: 20px;
+	}
+
+	.modal-close img{
+		width: 20px;
+		height: 20px;
+	}
+
+	.measurements {
+		margin: 0;
+	}
+
+	.measurements h3, .measurements p {
+		font-size: 8px;
+		margin-top: 5px;
+	}
+
+	.measurements-table th,
+	.measurements-table td {
+		padding: 16px;
+		font-size: 8px;
+		margin-top: 5px;
+	}
+
+	.modal-content h2 {
+		margin-bottom: 4px;
+	}
+
+	.measurements-bundle {
+		gap: 4px;
+	}
+
+    .tnc-section {
+        margin: 20px auto;
+    }
+
+    .tnc-section h1 {
+        font-size: 16px;
+    }
+
+    .tnc-section h2 {
+        font-size: 12px;
+    }
+
+    .tnc-section h3 {
+        font-size: 10px;
+    }
+
+    .tnc-section h4,
+    .tnc-section p,
+    .tnc-section li {
+        font-size: 10px;
+    }
 }
 
 .model-info a {
