@@ -647,6 +647,7 @@ footer a {
     height: 100vh;
     overflow: hidden;
 	cursor: pointer;
+	background-color: #000;
 }
 
 .background-video {
