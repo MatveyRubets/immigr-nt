@@ -47,16 +47,28 @@ a {
 	height: 87px;
 }
 
+/* Default state: header is visible */
 .navbar {
-	display: flex;
-	justify-content: space-between;
-	padding-left: 22px;
-	position: fixed;
-	top: 0;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 22px;
+    position: fixed;
+    top: 0; /* Visible by default */
     left: 0;
     width: 100%;
+    transition: top 0.3s ease-in-out;
+    z-index: 1000;
 }
 
+/* Hidden state for the main page */
+body.main-page .navbar {
+    top: -100px; /* Hidden by default on the main page */
+}
+
+/* Visible state when scrolling on the main page */
+body.main-page .navbar.visible {
+    top: 0; /* Visible when scrolled */
+}
 .nav-cart {
     display: flex;
     align-items: center;
@@ -479,7 +491,7 @@ body.menu-open {
 .measurements-table th,
 .measurements-table td {
     border: 1px solid #000;
-    padding: 22px;
+    padding: 18px;
     text-align: center;
 }
 
@@ -626,6 +638,25 @@ footer a {
 	font-family: "SpaceMono-Regular";
 	text-align: center;
 	text-decoration: underline;
+}
+
+/* Full-screen video section */
+.video-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+	cursor: pointer;
+}
+
+.background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the video covers the entire container */
+    z-index: -1;
 }
 
 @media (min-width: 1200px) {
@@ -937,7 +968,7 @@ footer a {
 
 	.measurements-table th,
 	.measurements-table td {
-		padding: 16px;
+		padding: 10px;
 		font-size: 8px;
 		margin-top: 5px;
 	}

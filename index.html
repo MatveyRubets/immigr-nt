@@ -30,12 +30,20 @@
 	/></noscript>
 	<!-- End Meta Pixel Code -->
 	</head>
-	<body>
+	<body class="main-page">
 		<!-- <section class="soon">
 			<h1 class="soon_heading">SORRY 5 DA WAIT</h1>
 			<p>THIS FRIDAY?</p>
 			<div><img src="./assets/icons/immigrnt.svg" alt=""></div>
 		</section> -->
+
+		<section class="video-section" id="video-section">
+    		<video autoplay muted loop class="background-video" id="responsive-video">
+				<source src="./assets/immi-home.mp4" type="video/mp4" media="(min-width: 451px)"/>
+				<source src="./assets/Phone.mp4" type="video/mp4" media="(max-width: 450px)" >
+        		Your browser does not support the video tag.
+    		</video>
+		</section>
 
 		<header class="header-container">
 			<nav class="navbar">
@@ -52,9 +60,6 @@
 				</button>
 				<ul class="nav-list" id="nav-list">
 					<li class="nav-item">
-						<a href="./pages/about-us.html">about us</a>
-					</li>
-					<li class="nav-item">
 						<a href="./index.html">shop</a>
 					</li>
 					<li class="nav-item">
@@ -69,8 +74,8 @@
 				</a>
 			</nav>
 		</header>
-		<main>
-			<ul class="products">
+		<main id="products-section">
+			<ul class="products"  >
 				<li class="products-item">
 					<a href="./pages/hoodie.html">
 						<img

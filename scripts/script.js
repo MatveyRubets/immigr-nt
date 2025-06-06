@@ -29,6 +29,71 @@ document.addEventListener("DOMContentLoaded", function () {
 			closeMenuHandler();
 		}
 	});
+
+	const video = document.getElementById("responsive-video");
+    const videoSource = document.createElement("source");
+
+    function setVideoSource() {
+        const screenWidth = window.innerWidth;
+
+        // Set video source based on screen width
+        if (screenWidth >= 768) {
+            videoSource.src = "./assets/immi-home.mp4"; // Desktop video
+        } else {
+            videoSource.src = "./assets/Phone.mp4"; // Mobile video
+        }
+
+        videoSource.type = "video/mp4";
+        video.innerHTML = ""; // Clear existing sources
+        video.appendChild(videoSource);
+        video.load(); // Reload the video with the new source
+    }
+
+    // Set video source on page load
+    setVideoSource();
+
+    // Update video source on window resize
+    window.addEventListener("resize", setVideoSource);
+
+	const videoSection = document.getElementById("video-section");
+    const productsSection = document.getElementById("products-section");
+
+	videoSection.addEventListener("click", () => {
+		const targetPosition = productsSection.offsetTop;
+		const startPosition = window.scrollY;
+		const distance = targetPosition - startPosition;
+		const duration = 500; // Duration in milliseconds
+		let start = null;
+
+		function smoothScroll(timestamp) {
+			if (!start) start = timestamp;
+			const progress = timestamp - start;
+			const ease = progress / duration < 0.5
+				? 2 * (progress / duration) ** 2
+				: 1 - Math.pow(-2 * (progress / duration) + 2, 2) / 2; // Ease-in-out
+			window.scrollTo(0, startPosition + distance * ease);
+
+			if (progress < duration) {
+				requestAnimationFrame(smoothScroll);
+			}
+		}
+
+		requestAnimationFrame(smoothScroll);
+	});
+
+    if (document.body.classList.contains("main-page")) {
+        document.addEventListener("scroll", () => {
+            const header = document.querySelector(".navbar");
+            const scrollPosition = window.scrollY;
+            const screenHeight = window.innerHeight;
+
+            if (scrollPosition > screenHeight / 2) {
+                header.classList.add("visible");
+            } else {
+                header.classList.remove("visible");
+            }
+        });
+    }
 });
 
 let currentSlide = 0;
@@ -67,4 +132,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.style.overflow = 'auto';
         }
     });
+
+
 });
+
