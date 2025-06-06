@@ -658,7 +658,7 @@ footer a {
     height: 100%;
     object-fit: cover; /* Ensures the video covers the entire container */
 	pointer-events: none; /* Disables interaction with the video */
-    z-index: -1;
+	z-index: 1;
 }
 
 @media (min-width: 1200px) {
