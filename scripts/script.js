@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (screenWidth >= 768) {
             videoSource.src = "./assets/immi-home.mp4"; // Desktop video
         } else {
-            videoSource.src = "./assets/Phone.mp4"; // Mobile video
+            videoSource.src = "./assets/phone-video.mp4"; // Mobile video
         }
 
         videoSource.type = "video/mp4";
