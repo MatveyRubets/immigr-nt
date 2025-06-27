@@ -25,6 +25,11 @@
 	src: url("./fonts/space_mono/SpaceMono-Bold.ttf");
 }
 
+@font-face {
+	font-family: "IBMPlexMono-Regular";
+	src: url("./fonts/ibmplexmono/IBMPlexMono-Regular.ttf");
+}
+
 body {
 	background-color: #fff;
 	display: flex;
@@ -119,7 +124,7 @@ li {
 }
 
 .products-img {
-	max-height: 523px;
+	max-height: 512px;
 	margin-bottom: 42px;
 	display: block;
 }
@@ -661,10 +666,63 @@ footer a {
 	z-index: 1;
 }
 
+.video-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.background-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay-text {
+  position: absolute;
+  top: 35%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 22%;
+  transform: translateY(-50%);
+  font-size: 3rem;
+  font-family: "IBMPlexMono-Regular";
+  color: white;
+  font-size: 35px;
+  mix-blend-mode: difference;
+  z-index: 2;
+  letter-spacing: 0%;
+}
+
+.word-left,
+.word-right {
+  pointer-events: none;
+}
+
+.shop-now {
+  position: absolute;
+  bottom: 40px;
+  width: 100%;
+  text-align: center;
+  font-size: 1.5rem;
+  font-family: "IBMPlexMono-Regular";
+  letter-spacing: 1%;
+  text-decoration: underline;
+  color: white;
+  mix-blend-mode: difference;
+  z-index: 2;
+  letter-spacing: 1px;
+  cursor: pointer;
+  text-underline-offset: 5px
+}
+
+
 @media (min-width: 1200px) {
 
 	.products {
-		gap: 272px;
+		gap: 175px;
 	}
 	.products-bundles {
 		gap: 170px;
@@ -838,6 +896,10 @@ footer a {
 	.next {
 		right: -30px;
 	}
+
+	/* .product-info ul, .product-info h2, .product-info p, .price {
+		font-size: 11px;
+	} */
 }
 
 /* Responsive Styles */
@@ -1011,6 +1073,30 @@ footer a {
 
 	footer p{
 		font-size: 9px;
+	}
+
+	.overlay-text {
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+		padding: 40px 0;
+		height: 100vh;
+		transform: none;
+	}
+
+	.word-left,
+	.word-right {
+		writing-mode: vertical-rl;
+		font-size: 2.5rem;
+	}
+
+	.shop-now {
+		bottom: 50%;
+		font-size: 1.25rem;
 	}
 }
 
