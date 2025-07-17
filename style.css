@@ -104,6 +104,32 @@ li {
 	margin: 36px 31px;
 }
 
+.out-of-stock {
+  opacity: 0.5;
+  position: relative;
+}
+
+.product-image-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.out-of-stock-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 110%;
+  font-family: 'Spartan', sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 107%;
+  letter-spacing: 2%;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
 .products {
 	display: flex;
 	gap: 214px;
