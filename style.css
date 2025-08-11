@@ -1120,13 +1120,12 @@ footer a {
 
   .word-left,
   .word-right {
-    writing-mode: vertical-rl;
-    font-size: 2.5rem;
+    font-size: 12px;
   }
 
   .shop-now {
     bottom: 50%;
-    font-size: 1.25rem;
+    font-size: 12px;
   }
 }
 
