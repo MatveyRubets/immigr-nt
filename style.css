@@ -747,9 +747,13 @@ footer a {
   text-underline-offset: 5px;
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1600px) {
   .products {
-    gap: 185px;
+    gap: 215px;
+  }
+  .products-img {
+    width: 430px;
+    height: 600px;
   }
   .products-bundles {
     gap: 170px;
@@ -821,7 +825,7 @@ footer a {
 
   .products {
     margin: 40px 45px;
-    gap: 20px;
+    gap: 80px;
   }
 
   .product-page {
