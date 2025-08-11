@@ -131,7 +131,7 @@ li {
 
 .products {
   display: flex;
-  gap: 185px;
+  gap: 65px;
   margin: 53px 66px 93px;
   justify-content: center;
   flex-wrap: wrap;
@@ -749,7 +749,7 @@ footer a {
 
 @media (min-width: 1200px) {
   .products {
-    gap: 125px;
+    gap: 185px;
   }
   .products-bundles {
     gap: 170px;
