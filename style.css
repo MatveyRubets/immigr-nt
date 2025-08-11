@@ -132,7 +132,7 @@ li {
 .products {
   display: flex;
   gap: 65px;
-  margin: 53px 66px 93px;
+  margin: 53px 0 93px;
   justify-content: center;
   flex-wrap: wrap;
 }
