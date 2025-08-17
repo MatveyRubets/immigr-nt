@@ -268,41 +268,241 @@
     </footer>
   </body>
   <script defer src="./scripts/script.js"></script>
-  <script type="text/javascript">
-    /*<![CDATA[*/
+  <script>
     (function () {
-      var scriptURL =
+      "use strict";
+
+      /* ---------------------------- Config (edit me) ---------------------------- */
+      const SHOPIFY_DOMAIN = "a7cpqd-t6.myshopify.com";
+      const STOREFRONT_TOKEN = "499807ad1d9398ef053c159d436b2a71";
+      const DEFAULT_EUR_MARKET_COUNTRY = "BE"; // your default EUR market country code
+      const BUY_BUTTON_SDK =
         "https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js";
-      if (window.ShopifyBuy) {
-        if (window.ShopifyBuy.UI) {
-          ShopifyBuyInit();
-        } else {
-          loadScript();
-        }
-      } else {
-        loadScript();
-      }
-      function loadScript() {
-        var script = document.createElement("script");
-        script.async = true;
-        script.src = scriptURL;
-        (
-          document.getElementsByTagName("head")[0] ||
-          document.getElementsByTagName("body")[0]
-        ).appendChild(script);
-        script.onload = ShopifyBuyInit;
+
+      /* ------------------------------- Utilities -------------------------------- */
+
+      // Query param override: ?forceCountry=PL  (good for testing)
+      function overrideFromQuery() {
+        const m = location.search.match(/[?&]forceCountry=([A-Z]{2})/);
+        return m ? m[1] : null;
       }
 
-      function ShopifyBuyInit() {
-        var client = ShopifyBuy.buildClient({
-          domain: "a7cpqd-t6.myshopify.com",
-          storefrontAccessToken: "499807ad1d9398ef053c159d436b2a71",
+      // Promise that resolves the first time an element matching selector appears
+      function waitForElement(selector, root = document) {
+        return new Promise((resolve) => {
+          const el = root.querySelector(selector);
+          if (el) return resolve(el);
+          const mo = new MutationObserver(() => {
+            const el2 = root.querySelector(selector);
+            if (el2) {
+              mo.disconnect();
+              resolve(el2);
+            }
+          });
+          mo.observe(root, { childList: true, subtree: true });
         });
-        ShopifyBuy.UI.onReady(client).then(function (ui) {
-          ui.createComponent("cart", {
-            id: "15033473204611",
-            toggles: [{ node: document.getElementById("cart-toggle") }],
-            moneyFormat: "%E2%82%AC%7B%7Bamount_with_comma_separator%7D%7D",
+      }
+
+      // Robust geolocation: query multiple public providers, allow overrides
+      async function getCountryCode() {
+        try {
+          const forced =
+            overrideFromQuery() || localStorage.getItem("forceCountry");
+          if (forced) {
+            console.log("[geo] forced country via query/localStorage:", forced);
+            return forced.toUpperCase();
+          }
+        } catch (e) {
+          console.warn("[geo] override check failed:", e);
+        }
+
+        const providers = [
+          { url: "https://ipwho.is/", pick: (j) => j && j.country_code },
+          { url: "https://ipapi.co/json/", pick: (j) => j && j.country_code },
+          {
+            url: "https://get.geojs.io/v1/ip/geo.json",
+            pick: (j) => j && j.country_code,
+          },
+          {
+            url: "https://geolocation-db.com/json/",
+            pick: (j) => j && j.country_code,
+          },
+        ];
+
+        for (const p of providers) {
+          try {
+            const r = await fetch(p.url, {
+              cache: "no-store",
+              headers: { Accept: "application/json" },
+            });
+            console.log("[geo] fetch", p.url, "status:", r.status);
+            if (!r.ok) continue;
+            const j = await r.json();
+            console.log("[geo] response", p.url, j);
+            const cc = p.pick(j);
+            if (cc && /^[A-Za-z]{2}$/.test(cc)) return cc.toUpperCase();
+          } catch (e) {
+            console.warn("[geo] provider failed:", p.url, e);
+          }
+        }
+
+        console.warn(
+          "[geo] all providers failed — falling back to default market"
+        );
+        return null;
+      }
+
+      // Only the countries we care about; everyone else → EUR market country
+      function pickBuyerCountry(cc) {
+        if (cc === "PL") return "PL";
+        if (cc === "UA") return "UA";
+        return DEFAULT_EUR_MARKET_COUNTRY;
+      }
+
+      // Visual price formatting in the cart UI
+      function moneyFormatForCountry(cc) {
+        switch (cc) {
+          case "PL":
+            // 1.234,56 zł  (non-breaking space before zł)
+            return "{{amount_with_comma_separator}}\u00A0zł";
+          case "UA":
+            // ₴1.234,56
+            return "₴{{amount_with_comma_separator}}";
+          default:
+            // €1.234,56
+            return "€{{amount_with_comma_separator}}";
+        }
+      }
+
+      // Make the cart’s separate currency code badge match our detected market
+      function setCartCurrencyBadge(cc) {
+        const map = { PL: "PLN", UA: "UAH" };
+        const code = map[cc] || "EUR";
+
+        const setNow = () => {
+          const el =
+            document.querySelector(".shopify-buy__currency") ||
+            document.querySelector('[data-element="cart.currency"]');
+          if (el) {
+            el.textContent = code;
+            return true;
+          }
+          return false;
+        };
+
+        if (!setNow()) {
+          new MutationObserver((_, obs) => {
+            if (setNow()) obs.disconnect();
+          }).observe(document.body, { childList: true, subtree: true });
+        }
+      }
+
+      // Create a Storefront Cart with buyerIdentity.countryCode and redirect to checkout
+      async function forceCheckoutCurrency(cc, cartComponent) {
+        const items =
+          cartComponent && cartComponent.model && cartComponent.model.lineItems
+            ? cartComponent.model.lineItems
+            : [];
+        if (!items.length) {
+          alert("Your cart is empty.");
+          return;
+        }
+
+        const lines = items.map((li) => ({
+          merchandiseId: li.variant.id, // GraphQL GID (gid://shopify/ProductVariant/…)
+          quantity: li.quantity,
+        }));
+
+        const mutation = `
+      mutation CreateCart($lines:[CartLineInput!], $buyer: CartBuyerIdentityInput) {
+        cartCreate(input:{ lines: $lines, buyerIdentity: $buyer }) {
+          cart { checkoutUrl }
+          userErrors { message }
+        }
+      }
+    `;
+
+        try {
+          const res = await fetch(
+            `https://${SHOPIFY_DOMAIN}/api/2025-01/graphql.json`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                "X-Shopify-Storefront-Access-Token": STOREFRONT_TOKEN,
+              },
+              body: JSON.stringify({
+                query: mutation,
+                variables: { lines, buyer: { countryCode: cc } },
+              }),
+            }
+          );
+
+          const json = await res.json();
+          console.log("[checkout] cartCreate response:", json);
+
+          const url = json?.data?.cartCreate?.cart?.checkoutUrl;
+          if (!url) {
+            const msg =
+              (json?.data?.cartCreate?.userErrors || [])
+                .map((e) => e.message)
+                .join(", ") || "Unknown error";
+            alert("Could not start checkout: " + msg);
+            return;
+          }
+          window.location.href = url;
+        } catch (err) {
+          console.error("[checkout] cartCreate failed:", err);
+          alert("Something went wrong starting checkout.");
+        }
+      }
+
+      // Ensure Buy Button SDK present; then run ShopifyBuyInit
+      function ensureBuyButtonSdk() {
+        return new Promise((resolve) => {
+          if (window.ShopifyBuy && window.ShopifyBuy.UI) return resolve();
+          const s = document.createElement("script");
+          s.async = true;
+          s.src = BUY_BUTTON_SDK;
+          s.onload = () => resolve();
+          (document.head || document.body).appendChild(s);
+        });
+      }
+
+      /* --------------------------- Main initialization -------------------------- */
+
+      async function ShopifyBuyInit() {
+        console.log("[init] start");
+
+        await ensureBuyButtonSdk();
+
+        const rawCC = (await getCountryCode()) || DEFAULT_EUR_MARKET_COUNTRY;
+        const buyerCC = pickBuyerCountry(rawCC);
+        const moneyFmt = moneyFormatForCountry(buyerCC);
+
+        console.log("[init] geo:", { rawCC, buyerCC, moneyFmt });
+
+        // Ensure there is a cart toggle anchor in the nav (if not present)
+        let toggleNode = document.getElementById("cart-toggle");
+        if (!toggleNode) {
+          toggleNode = document.createElement("a");
+          toggleNode.id = "cart-toggle";
+          toggleNode.href = "#";
+          toggleNode.textContent = "cart (0)";
+          document.body.appendChild(toggleNode);
+        }
+
+        const client = ShopifyBuy.buildClient({
+          domain: SHOPIFY_DOMAIN,
+          storefrontAccessToken: STOREFRONT_TOKEN,
+        });
+
+        // Build the cart component
+        window.ShopifyBuy.UI.onReady(client).then(async function (ui) {
+          const cart = ui.createComponent("cart", {
+            toggles: [{ node: toggleNode }],
+            moneyFormat: moneyFmt, // visual formatting per visitor
             options: {
               toggle: {
                 sticky: false,
@@ -323,48 +523,19 @@
                     },
                     "background-color": "#222222",
                   },
-                  title: {
-                    color: "#252525",
-                  },
-                  header: {
-                    color: "#252525",
-                  },
-                  lineItems: {
-                    color: "#252525",
-                  },
-                  subtotalText: {
-                    color: "#252525",
-                  },
-                  subtotal: {
-                    color: "#252525",
-                  },
-                  notice: {
-                    color: "#252525",
-                  },
-                  currency: {
-                    color: "#252525",
-                  },
-                  close: {
-                    color: "#252525",
-                    ":hover": {
-                      color: "#252525",
-                    },
-                  },
-                  empty: {
-                    color: "#252525",
-                  },
-                  noteDescription: {
-                    color: "#252525",
-                  },
-                  discountText: {
-                    color: "#252525",
-                  },
-                  discountIcon: {
-                    fill: "#252525",
-                  },
-                  discountAmount: {
-                    color: "#252525",
-                  },
+                  title: { color: "#252525" },
+                  header: { color: "#252525" },
+                  lineItems: { color: "#252525" },
+                  subtotalText: { color: "#252525" },
+                  subtotal: { color: "#252525" },
+                  notice: { color: "#252525" },
+                  currency: { color: "#252525" },
+                  close: { color: "#252525", ":hover": { color: "#252525" } },
+                  empty: { color: "#252525" },
+                  noteDescription: { color: "#252525" },
+                  discountText: { color: "#252525" },
+                  discountIcon: { fill: "#252525" },
+                  discountAmount: { color: "#252525" },
                 },
                 text: {
                   title: "CART",
@@ -377,9 +548,31 @@
               },
             },
           });
+
+          // Update the cart currency badge (EUR/PLN/UAH) to match detected market
+          setCartCurrencyBadge(buyerCC);
+
+          // Intercept checkout button to force the checkout currency via Storefront Cart
+          const buttonSelector =
+            ".shopify-buy__btn--cart-checkout, .shopify-buy__cart-checkout-button";
+
+          const checkoutBtn = await waitForElement(buttonSelector);
+          checkoutBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            forceCheckoutCurrency(buyerCC, cart);
+          });
+
+          console.log("[init] cart ready; checkout hooked");
         });
       }
+
+      // Kick things off after DOM is interactive. (Script is deferred, but this is safe.)
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", ShopifyBuyInit);
+      } else {
+        ShopifyBuyInit();
+      }
     })();
-    /*]]>*/
   </script>
 </html>
