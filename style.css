@@ -155,6 +155,7 @@ li {
   margin-bottom: 42px;
   display: block;
   object-fit: contain;
+  border-radius: 10px;
 }
 
 .products-title {

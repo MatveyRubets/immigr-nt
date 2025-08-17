@@ -161,160 +161,297 @@
 		</div>
 	</body>
 	<script defer src="../scripts/script.js"></script>
-	<!-- Hoodie -->
-		<script type="text/javascript">
-			/*<![CDATA[*/
-			(function () {
-				var scriptURL =
-					"https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js";
-				if (window.ShopifyBuy) {
-					if (window.ShopifyBuy.UI) {
-						ShopifyBuyInit();
-					} else {
-						loadScript();
-					}
-				} else {
-					loadScript();
-				}
-				function loadScript() {
-					var script = document.createElement("script");
-					script.async = true;
-					script.src = scriptURL;
-					(
-						document.getElementsByTagName("head")[0] ||
-						document.getElementsByTagName("body")[0]
-					).appendChild(script);
-					script.onload = ShopifyBuyInit;
-				}
-				function ShopifyBuyInit() {
-					var client = ShopifyBuy.buildClient({
-						domain: "a7cpqd-t6.myshopify.com",
-						storefrontAccessToken: "499807ad1d9398ef053c159d436b2a71",
-					});
-					ShopifyBuy.UI.onReady(client).then(function (ui) {
-						ui.createComponent("product", {
-							id: "15033466782083",
-							node: document.getElementById(
-								"product-component-1740233808512"
-							),
-							toggles: [{ node: document.getElementById("cart-toggle") }],
-							moneyFormat: "%E2%82%AC%7B%7Bamount_with_comma_separator%7D%7D",
-							options: {
-								product: {
-									styles: {
-										display: "flex",
-										button: {
-											"text-transform": "uppercase !important",
-											width: "100%",
-											":hover": {
-												"background-color": "#ffffff",
-												"color": "#000000",
-											},
-											"background-color": "#000000",
-											padding: "10px",
-											"border": "1px solid #000000",
-											":focus": {
-												"background-color": "#ffffff",
-												"color": "#000000",
-											},
-										},
-										buttonWrapper: {
-											"margin-left": "0px !important",
-										},
-										options: {
-											"margin-left": "0px !important",
-										},
-									},
-									layout: "horizontal",
-									contents: {
-										img: false,
-										imgWithCarousel: false,
-										description: false,
-										title: false,
-										price: false,
-										description: false,
-										options: true,
-									},
-									text: {
-										button: "Add to bag",
-									},
-								},
-								toggle: {
-									sticky: false,
-									iframe: false,
-									"templates":{
-										icon: '',
-										count: '<span class="{{data.classes.toggle.count}}" data-element="toggle.count">cart ({{data.count}})</span>',
-									},
-								},
-								cart: {
-									styles: {
-										button: {
-											":hover": {
-												color: "#222222",
-												"background-color": "#fff",
-												border: "1px solid #222222",
+<script type="text/javascript">
+/*<![CDATA[*/
+(function () {
+  "use strict";
 
-											},
-											"background-color": "#222222",
-										},
-										title: {
-											color: "#252525",
-										},
-										header: {
-											color: "#252525",
-										},
-										lineItems: {
-											color: "#252525",
-										},
-										subtotalText: {
-											color: "#252525",
-										},
-										subtotal: {
-											color: "#252525",
-										},
-										notice: {
-											color: "#252525",
-										},
-										currency: {
-											color: "#252525",
-										},
-										close: {
-											color: "#252525",
-											":hover": {
-												color: "#252525",
-											},
-										},
-										empty: {
-											color: "#252525",
-										},
-										noteDescription: {
-											color: "#252525",
-										},
-										discountText: {
-											color: "#252525",
-										},
-										discountIcon: {
-											fill: "#252525",
-										},
-										discountAmount: {
-											color: "#252525",
-										},
-									},
-									text: {
-										title: "CART",
-										total: "TOTAL",
-										empty: "BUY SUM!",
-										notice: "",
-										button: "TO CHECKOUT!",
-									},
-									popup: false,
-								},
-							},
-						});
-					});
-				}
-			})();
-			/*]]>*/
+  // prevent double run if you accidentally include it twice
+  if (window.__IMMIGR_PRODUCT_INIT__) return;
+  window.__IMMIGR_PRODUCT_INIT__ = true;
+
+  /* ---------------------------- Config ---------------------------- */
+  const SHOPIFY_DOMAIN = "a7cpqd-t6.myshopify.com";
+  const STOREFRONT_TOKEN = "499807ad1d9398ef053c159d436b2a71";
+  const DEFAULT_EUR_MARKET_COUNTRY = "BE"; // fallback market (EUR)
+  const BUY_BUTTON_SDK = "https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js";
+
+  const PRODUCT_ID = "15033466782083";
+  const PRODUCT_NODE_ID = "product-component-1740233808512";
+  const CART_TOGGLE_NODE_ID = "cart-toggle"; // your header link
+
+  /* --------------------------- Utilities -------------------------- */
+
+  // ?forceCountry=PL (or UA/BE) for testing
+  function overrideFromQuery() {
+    const m = location.search.match(/[?&]forceCountry=([A-Z]{2})/);
+    return m ? m[1] : null;
+  }
+
+  // Wait until a selector appears in DOM
+  function waitForElement(selector, root = document) {
+    return new Promise((resolve) => {
+      const el = root.querySelector(selector);
+      if (el) return resolve(el);
+      const mo = new MutationObserver(() => {
+        const found = root.querySelector(selector);
+        if (found) { mo.disconnect(); resolve(found); }
+      });
+      mo.observe(root, { childList: true, subtree: true });
+    });
+  }
+
+  // Geo detection with fallbacks; respects overrides
+  async function getCountryCode() {
+    try {
+      const forced = overrideFromQuery() || localStorage.getItem("forceCountry");
+      if (forced) {
+        console.log("[geo] forced country:", forced);
+        return forced.toUpperCase();
+      }
+    } catch (e) {
+      console.warn("[geo] override check failed:", e);
+    }
+
+    const providers = [
+      { url: "https://ipwho.is/", pick: (j) => j && j.country_code },
+      { url: "https://ipapi.co/json/", pick: (j) => j && j.country_code },
+      { url: "https://get.geojs.io/v1/ip/geo.json", pick: (j) => j && j.country_code },
+      { url: "https://geolocation-db.com/json/", pick: (j) => j && j.country_code },
+    ];
+
+    for (const p of providers) {
+      try {
+        const r = await fetch(p.url, { cache: "no-store", headers: { Accept: "application/json" } });
+        console.log("[geo] fetch", p.url, "status:", r.status);
+        if (!r.ok) continue;
+        const j = await r.json();
+        console.log("[geo] response", p.url, j);
+        const cc = p.pick(j);
+        if (cc && /^[A-Za-z]{2}$/.test(cc)) return cc.toUpperCase();
+      } catch (e) {
+        console.warn("[geo] provider failed:", p.url, e);
+      }
+    }
+
+    console.warn("[geo] all providers failed — using default");
+    return null;
+  }
+
+  // map to markets you support (PL, UA → themselves; others → EUR market country)
+  function pickBuyerCountry(cc) {
+    if (cc === "PL") return "PL";
+    if (cc === "UA") return "UA";
+    return DEFAULT_EUR_MARKET_COUNTRY;
+  }
+
+  // visual formatting for product/cart UI
+  function moneyFormatForCountry(cc) {
+    switch (cc) {
+      case "PL": return "{{amount_with_comma_separator}}\u00A0zł"; // 1.234,56 zł
+      case "UA": return "₴{{amount_with_comma_separator}}";       // ₴1.234,56
+      default:   return "€{{amount_with_comma_separator}}";       // €1.234,56
+    }
+  }
+
+  // make the cart’s little currency code badge match our market (or hide it)
+  function setCartCurrencyBadge(cc) {
+    const map = { PL: "PLN", UA: "UAH" };
+    const code = map[cc] || "EUR";
+
+    const setNow = () => {
+      const el =
+        document.querySelector(".shopify-buy__currency") ||
+        document.querySelector('[data-element="cart.currency"]');
+      if (el) { el.textContent = code; return true; }
+      return false;
+    };
+
+    if (!setNow()) {
+      new MutationObserver((_, obs) => { if (setNow()) obs.disconnect(); })
+        .observe(document.body, { childList: true, subtree: true });
+    }
+  }
+
+  // Create a Storefront Cart with buyerIdentity.countryCode and redirect to checkout
+  async function forceCheckoutCurrency(buyerCC, cartComponent) {
+    const items =
+      cartComponent && cartComponent.model && cartComponent.model.lineItems
+        ? cartComponent.model.lineItems
+        : [];
+    if (!items.length) { alert("Your cart is empty."); return; }
+
+    const lines = items.map((li) => ({
+      merchandiseId: li.variant.id, // GraphQL GID
+      quantity: li.quantity,
+    }));
+
+    const mutation = `
+      mutation CreateCart($lines:[CartLineInput!], $buyer: CartBuyerIdentityInput) {
+        cartCreate(input:{ lines: $lines, buyerIdentity: $buyer }) {
+          cart { checkoutUrl }
+          userErrors { message }
+        }
+      }
+    `;
+
+    try {
+      const res = await fetch(`https://${SHOPIFY_DOMAIN}/api/2025-01/graphql.json`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          "X-Shopify-Storefront-Access-Token": STOREFRONT_TOKEN,
+        },
+        body: JSON.stringify({ query: mutation, variables: { lines, buyer: { countryCode: buyerCC } } }),
+      });
+      const json = await res.json();
+      console.log("[checkout] cartCreate response:", json);
+
+      const url = json?.data?.cartCreate?.cart?.checkoutUrl;
+      if (!url) {
+        const msg = (json?.data?.cartCreate?.userErrors || []).map((e) => e.message).join(", ") || "Unknown error";
+        alert("Could not start checkout: " + msg);
+        return;
+      }
+      window.location.href = url;
+    } catch (err) {
+      console.error("[checkout] cartCreate failed:", err);
+      alert("Something went wrong starting checkout.");
+    }
+  }
+
+  // ensure the Buy Button SDK is present
+  function ensureBuyButtonSdk(cb) {
+    if (window.ShopifyBuy && window.ShopifyBuy.UI) return cb();
+    var script = document.createElement("script");
+    script.async = true;
+    script.src = BUY_BUTTON_SDK;
+    (document.head || document.body).appendChild(script);
+    script.onload = cb;
+  }
+
+  /* ------------------------ Main initialization ------------------------ */
+
+  function ShopifyBuyInit() {
+    (async () => {
+      const rawCC = (await getCountryCode()) || DEFAULT_EUR_MARKET_COUNTRY;
+      const buyerCC = pickBuyerCountry(rawCC);
+      const moneyFmt = moneyFormatForCountry(buyerCC);
+      console.log("[init] geo:", { rawCC, buyerCC, moneyFmt });
+
+      const client = ShopifyBuy.buildClient({
+        domain: SHOPIFY_DOMAIN,
+        storefrontAccessToken: STOREFRONT_TOKEN,
+      });
+
+      ShopifyBuy.UI.onReady(client).then(async function (ui) {
+        // 1) Create the CART explicitly so we can hook checkout
+        const toggleNode = document.getElementById(CART_TOGGLE_NODE_ID);
+        const cart = ui.createComponent("cart", {
+          toggles: toggleNode ? [{ node: toggleNode }] : [],
+          moneyFormat: moneyFmt,
+          options: {
+            cart: {
+              styles: {
+                button: {
+                  ":hover": { color: "#222222", "background-color": "#fff", border: "1px solid #222222" },
+                  "background-color": "#222222",
+                },
+                title: { color: "#252525" },
+                header: { color: "#252525" },
+                lineItems: { color: "#252525" },
+                subtotalText: { color: "#252525" },
+                subtotal: { color: "#252525" },
+                notice: { color: "#252525" },
+                currency: { color: "#252525" },
+                close: { color: "#252525", ":hover": { color: "#252525" } },
+                empty: { color: "#252525" },
+                noteDescription: { color: "#252525" },
+                discountText: { color: "#252525" },
+                discountIcon: { fill: "#252525" },
+                discountAmount: { color: "#252525" },
+              },
+              text: {
+                title: "CART",
+                total: "TOTAL",
+                empty: "BUY SUM!",
+                notice: "",
+                button: "TO CHECKOUT!",
+              },
+              popup: false,
+            },
+            toggle: {
+              sticky: false,
+              iframe: false,
+              templates: {
+                icon: "",
+                count: '<span class="{{data.classes.toggle.count}}" data-element="toggle.count">cart ({{data.count}})</span>',
+              },
+            },
+          },
+        });
+
+        // fix the currency badge to match PLN/UAH/EUR
+        setCartCurrencyBadge(buyerCC);
+
+        // 2) Create the PRODUCT (uses same moneyFormat)
+        ui.createComponent("product", {
+          id: PRODUCT_ID,
+          node: document.getElementById(PRODUCT_NODE_ID),
+          moneyFormat: moneyFmt,
+          options: {
+            product: {
+              styles: {
+                display: "flex",
+                button: {
+                  "text-transform": "uppercase !important",
+                  width: "100%",
+                  ":hover": { "background-color": "#ffffff", "color": "#000000" },
+                  "background-color": "#000000",
+                  padding: "10px",
+                  border: "1px solid #000000",
+                  ":focus": { "background-color": "#ffffff", "color": "#000000" },
+                },
+                buttonWrapper: { "margin-left": "0px !important" },
+                options: { "margin-left": "0px !important" },
+              },
+              layout: "horizontal",
+              contents: {
+                img: false,
+                imgWithCarousel: false,
+                description: false,
+                title: false,
+                price: false,
+                options: true,
+              },
+              text: { button: "Add to bag" },
+            },
+          },
+        });
+
+        // 3) Intercept the checkout button to force market-specific checkout
+        const buttonSelector =
+          ".shopify-buy__btn--cart-checkout, .shopify-buy__cart-checkout-button";
+        const checkoutBtn = await waitForElement(buttonSelector);
+        checkoutBtn.addEventListener("click", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          forceCheckoutCurrency(buyerCC, cart);
+        });
+
+        console.log("[init] product + cart ready; checkout hooked");
+      });
+    })();
+  }
+
+  // Load SDK and run
+  if (window.ShopifyBuy && window.ShopifyBuy.UI) {
+    ShopifyBuyInit();
+  } else {
+    ensureBuyButtonSdk(ShopifyBuyInit);
+  }
+})();
+ /*]]>*/
 </script>
 </html>

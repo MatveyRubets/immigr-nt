@@ -1,339 +1,721 @@
-
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="../style.css" />
-		<title>IMMIGR NT</title>
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap"
-			rel="stylesheet"
-		/>
-		<style>
-			.shopify-buy--visually-hidden { display:none!important; }
-			.shopify-buy-frame, .shopify-buy__cart-toggle { padding:0px!important; margin:0px!important; display:inline!important; height:auto!important;line-height:1px!important;top:0!important;bottom:0!important; border-radius:0px!important; overflow:visible!important; }
-			
-		</style>
-				<!-- Meta Pixel Code -->
-<script>
-	!function(f,b,e,v,n,t,s)
-	{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-	n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-	if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-	n.queue=[];t=b.createElement(e);t.async=!0;
-	t.src=v;s=b.getElementsByTagName(e)[0];
-	s.parentNode.insertBefore(t,s)}(window, document,'script',
-	'https://connect.facebook.net/en_US/fbevents.js');
-	fbq('init', '703071995395077');
-	fbq('track', 'PageView');
-	</script>
-	<noscript><img height="1" width="1" style="display:none"
-	src="https://www.facebook.com/tr?id=703071995395077&ev=PageView&noscript=1"
-	/></noscript>
-	<!-- End Meta Pixel Code -->
-	</head>
-	<body>
-		<header class="header-container">
-			<nav class="navbar">
-				<button class="burger-menu" id="burger-menu">
-					<img src="../assets/icons/burger.svg" alt="Menu" />
-				</button>
-				<button class="close-menu" id="close-menu">
-					<img
-						src="../assets/icons/close.svg"
-						alt="Close"
-						width="20"
-						height="20"
-					/>
-				</button>
-				<ul class="nav-list" id="nav-list">
-					<li class="nav-item">
-						<a href="../index.html">shop</a>
-					</li>
-					<li class="nav-item">
-						<a href="https://www.instagram.com/immigr.nt/">instagram</a>
-					</li>
-					<li class="nav-item">
-						<a href="#" id="cart-toggle" class="nav-item"></a>
-					</li>
-				</ul>
-				<a  href="../index.html">
-					<img class="logo" src="../assets/icons/immigr-nt.svg" alt="">
-				</a>
-			</nav>
-		</header>
-        <main class="container tnc-section">
-            <h1 class="tnc-heading">Terms and Conditions</h1>
-            <p>
-                If you have any questions regarding these Terms and Conditions, or if you have any questions, complaints, claims or other legal concerns relating to IMMIGRNT or its business, please contact <a href="mailto:info@immigrnt.com">info@immigrnt.com</a>
-            </p>
-            <h2>General Terms of Use</h2>
-            <ol>
-                <li>You must create an Account in order to use the Service.</li>
-                <li>You must be at least 13 years old to use the Service.</li>
-                <li>You must use the Software only in accordance with our Acceptable Use Policy.</li>
-                <li>You are responsible for any activity that occurs through your Account and you agree you will not sell, transfer, license or assign your account, followers, username, or any Account rights.</li>
-                <li>
-                    With the exception of people or businesses that are expressly authorized to create Accounts on behalf of their employers or clients, we prohibit the creation of and you agree that you will not create an account for anyone other than yourself.
-                </li>
-                <li>
-                    You also represent that all information you provide or provided to us upon registration and at all other times will be true, accurate, current and complete and you agree to update your information as necessary to maintain its truth and accuracy.
-                </li>
-                <li>You agree that you will not solicit, collect or use the login credentials of other IMMIGRNT users.</li>
-                <li>You are responsible for keeping your password secret and secure.</li>
-            </ol>
-            <h2>Returns Terms</h2>
-            <p>This Refund and Returns Policy applies for all products purchased through the IMMIGRNT checkout.</p>
-            <p>
-                You acknowledge that IMMIGRNT provides a platform for users to purchase Products from a Seller, and that a sales contract is formed between you and IMMIGRNT.
-            </p>
-            <p>
-                You will be sent confirmation of the sales contract between IMMIGRNT and yourself via email promptly after the conclusion of the contract.
-            </p>
-            <p>Return Policy:</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style.css" />
+    <title>IMMIGR NT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .shopify-buy--visually-hidden {
+        display: none !important;
+      }
+      .shopify-buy-frame,
+      .shopify-buy__cart-toggle {
+        padding: 0px !important;
+        margin: 0px !important;
+        display: inline !important;
+        height: auto !important;
+        line-height: 1px !important;
+        top: 0 !important;
+        bottom: 0 !important;
+        border-radius: 0px !important;
+        overflow: visible !important;
+      }
+    </style>
+    <!-- Meta Pixel Code -->
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js"
+      );
+      fbq("init", "703071995395077");
+      fbq("track", "PageView");
+    </script>
+    <noscript
+      ><img
+        height="1"
+        width="1"
+        style="display: none"
+        src="https://www.facebook.com/tr?id=703071995395077&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+  </head>
+  <body>
+    <header class="header-container">
+      <nav class="navbar">
+        <button class="burger-menu" id="burger-menu">
+          <img src="../assets/icons/burger.svg" alt="Menu" />
+        </button>
+        <button class="close-menu" id="close-menu">
+          <img
+            src="../assets/icons/close.svg"
+            alt="Close"
+            width="20"
+            height="20"
+          />
+        </button>
+        <ul class="nav-list" id="nav-list">
+          <li class="nav-item">
+            <a href="../index.html">shop</a>
+          </li>
+          <li class="nav-item">
+            <a href="https://www.instagram.com/immigr.nt/">instagram</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" id="cart-toggle" class="nav-item"></a>
+          </li>
+        </ul>
+        <a href="../index.html">
+          <img class="logo" src="../assets/icons/immigr-nt.svg" alt="" />
+        </a>
+      </nav>
+    </header>
+    <main class="container tnc-section">
+      <h1 class="tnc-heading">Terms and Conditions</h1>
+      <p>
+        If you have any questions regarding these Terms and Conditions, or if
+        you have any questions, complaints, claims or other legal concerns
+        relating to IMMIGRNT or its business, please contact
+        <a href="mailto:info@immigrnt.com">info@immigrnt.com</a>
+      </p>
+      <h2>General Terms of Use</h2>
+      <ol>
+        <li>You must create an Account in order to use the Service.</li>
+        <li>You must be at least 13 years old to use the Service.</li>
+        <li>
+          You must use the Software only in accordance with our Acceptable Use
+          Policy.
+        </li>
+        <li>
+          You are responsible for any activity that occurs through your Account
+          and you agree you will not sell, transfer, license or assign your
+          account, followers, username, or any Account rights.
+        </li>
+        <li>
+          With the exception of people or businesses that are expressly
+          authorized to create Accounts on behalf of their employers or clients,
+          we prohibit the creation of and you agree that you will not create an
+          account for anyone other than yourself.
+        </li>
+        <li>
+          You also represent that all information you provide or provided to us
+          upon registration and at all other times will be true, accurate,
+          current and complete and you agree to update your information as
+          necessary to maintain its truth and accuracy.
+        </li>
+        <li>
+          You agree that you will not solicit, collect or use the login
+          credentials of other IMMIGRNT users.
+        </li>
+        <li>
+          You are responsible for keeping your password secret and secure.
+        </li>
+      </ol>
+      <h2>Returns Terms</h2>
+      <p>
+        This Refund and Returns Policy applies for all products purchased
+        through the IMMIGRNT checkout.
+      </p>
+      <p>
+        You acknowledge that IMMIGRNT provides a platform for users to purchase
+        Products from a Seller, and that a sales contract is formed between you
+        and IMMIGRNT.
+      </p>
+      <p>
+        You will be sent confirmation of the sales contract between IMMIGRNT and
+        yourself via email promptly after the conclusion of the contract.
+      </p>
+      <p>Return Policy:</p>
+      <ul>
+        <li>
+          Physical Products: IMMIGRNT cannot exchange or refund any physical
+          products due to hygiene reasons.
+        </li>
+        <li>
+          Returns from the Postal Service: If your order is returned to us due
+          to non-delivery or incorrect address, it will be automatically
+          cancelled and refunded and you will need to create another order again
+          in a case of contacting info@immigrnt.com.
+        </li>
+        <li>
+          Damaged or Faulty Items: Please send us pictures of the damaged or
+          faulty item you received as well as the external packaging and the
+          shipping label and we'll be happy to assist with a replacement or a
+          refund.
+        </li>
+        <li>
+          Returns by Customer: Any returned parcels sent by the customer without
+          acknowledgement from a member of the support team will not be
+          returned/exchanged or refunded.
+        </li>
+      </ul>
+      <p>
+        If you have any questions, please email
+        <a href="mailto:info@immigrnt.com">info@immigrnt.com</a>
+      </p>
+      <section class="privacy-policy">
+        <h2>Privacy Policy</h2>
+        <p>
+          WE DO NOT SHARE YOUR INFORMATION WITH OTHER PARTIES - YOUR
+          CONFIDENTIALITY IS KEY TO US.
+        </p>
+        <h3>Information We Collect</h3>
+        <p>We collect the following types of information:</p>
+        <h4>Information You Provide Us Directly:</h4>
+        <ul>
+          <li>
+            Your email address, first name and last name when you create an
+            account upon checkout
+          </li>
+          <li>
+            Public Information: All content shared on IMMIGRNT is open to the
+            public. We do not hide or make content private in any way.
+          </li>
+          <li>
+            Communications between you and IMMIGRNT. For example, we may send
+            you Service-related emails (e.g., account verification,
+            changes/updates to features of the Service, technical and security
+            notices). Note that you may not opt out of Service-related e-mails.
+          </li>
+          <li>Your email are private and not available to the public.</li>
+        </ul>
+        <h4>Technical Information We Collect:</h4>
+        <p>
+          Additionally, any use of IMMIGRNT’s website and/or software may result
+          in the collection of technical information such as your computer’s IP
+          address, mobile device identifier, meta data, operating system,
+          browser name/version, the referring web page, requested page; such
+          information is used to help us understand the overall usage pattern of
+          our website and software.
+        </p>
+        <p>
+          We also use third-party analytics tools to help us measure how you use
+          IMMIGRNT. These tools collect information sent by your device or our
+          Service, including how you like to use our software and website which
+          can help us in improving our Service.
+        </p>
+        <p>
+          IMMIGRNT may invite you to provide information through feedback on
+          features on our website or software; we may send out e-mail inviting
+          feedback or offering products and services; or we may ask you for
+          information concerning support of our products or services. Your
+          response to these communications may require you to submit personal
+          information and opinions.
+        </p>
+        <h3>How We Use Your Information</h3>
+        <p>We may use information that we receive to:</p>
+        <ul>
+          <li>
+            Help you efficiently access your information after you sign in
+          </li>
+          <li>
+            Remember information so you will not have to re-enter it during your
+            visit or the next time you visit the Service
+          </li>
+          <li>
+            Provide personalised content and information to you and others,
+            which could include online ads or other forms of marketing
+          </li>
+          <li>
+            Provide, improve, test, and monitor the effectiveness of our Service
+          </li>
+          <li>Develop and test new products and features</li>
+          <li>
+            Monitor metrics such as total number of visitors, traffic, and
+            demographic patterns
+          </li>
+          <li>Diagnose or fix technology problems</li>
+          <li>Automatically update the IMMIGRNT application on your device</li>
+        </ul>
+        <h3>Sharing of Your Information</h3>
+        <p>
+          We will not rent or sell your information to third parties outside
+          IMMIGRNT without your consent, except as noted in this Policy. Parties
+          with whom we may share your information:
+        </p>
+        <ul>
+          <li>
+            We may share User Content not personal information with potential
+            business partners, service providers as a way of improving our
+            service and providing relevant content. This will be done under
+            confidentiality terms.
+          </li>
+          <li>
+            We may remove parts of data that can identify you and share
+            anonymized data with other parties. We may also combine your
+            information with other information in a way that it is no longer
+            associated with you and share that aggregated information.
+          </li>
+          <li>
+            We may be required to disclose your information without your prior
+            consent by law for the following reasons:
             <ul>
-                <li>Physical Products: IMMIGRNT cannot exchange or refund any physical products due to hygiene reasons.</li>
-                <li>
-                    Returns from the Postal Service: If your order is returned to us due to non-delivery or incorrect address, it will be automatically cancelled and refunded and you will need to create another order again in a case of contacting info@immigrnt.com.
-                </li>
-                <li>
-                    Damaged or Faulty Items: Please send us pictures of the damaged or faulty item you received as well as the external packaging and the shipping label and we'll be happy to assist with a replacement or a refund.
-                </li>
-                <li>
-                    Returns by Customer: Any returned parcels sent by the customer without acknowledgement from a member of the support team will not be returned/exchanged or refunded.
-                </li>
+              <li>Comply with law or legal process</li>
+              <li>
+                Protect and defend our rights and property, or the rights and
+                property of a third party
+              </li>
+              <li>
+                Protect us against misuse or unauthorized use of any of
+                IMMIGRNT’s products, software, services, or other proprietary
+                materials
+              </li>
+              <li>Prevent death or imminent bodily harm</li>
+              <li>Prevent and address fraud and other illegal activity</li>
             </ul>
-            <p>If you have any questions, please email <a href="mailto:info@immigrnt.com">info@immigrnt.com</a></p>
-            <section class="privacy-policy">
-                <h2>Privacy Policy</h2>
-                <p>
-                    WE DO NOT SHARE YOUR INFORMATION WITH OTHER PARTIES - YOUR CONFIDENTIALITY IS KEY TO US.
-                </p>
-                <h3>Information We Collect</h3>
-                <p>We collect the following types of information:</p>
-                <h4>Information You Provide Us Directly:</h4>
-                <ul>
-                    <li>Your email address, first name and last name when you create an account upon checkout</li>
-                    <li>Public Information: All content shared on IMMIGRNT is open to the public. We do not hide or make content private in any way.</li>
-                    <li>
-                        Communications between you and IMMIGRNT. For example, we may send you Service-related emails (e.g., account verification, changes/updates to features of the Service, technical and security notices). Note that you may not opt out of Service-related e-mails.
-                    </li>
-                    <li>Your email are private and not available to the public.</li>
-                </ul>
-                <h4>Technical Information We Collect:</h4>
-                <p>
-                    Additionally, any use of IMMIGRNT’s website and/or software may result in the collection of technical information such as your computer’s IP address, mobile device identifier, meta data, operating system, browser name/version, the referring web page, requested page; such information is used to help us understand the overall usage pattern of our website and software.
-                </p>
-                <p>
-                    We also use third-party analytics tools to help us measure how you use IMMIGRNT. These tools collect information sent by your device or our Service, including how you like to use our software and website which can help us in improving our Service.
-                </p>
-                <p>
-                    IMMIGRNT may invite you to provide information through feedback on features on our website or software; we may send out e-mail inviting feedback or offering products and services; or we may ask you for information concerning support of our products or services. Your response to these communications may require you to submit personal information and opinions.
-                </p>
-                <h3>How We Use Your Information</h3>
-                <p>We may use information that we receive to:</p>
-                <ul>
-                    <li>Help you efficiently access your information after you sign in</li>
-                    <li>Remember information so you will not have to re-enter it during your visit or the next time you visit the Service</li>
-                    <li>Provide personalised content and information to you and others, which could include online ads or other forms of marketing</li>
-                    <li>Provide, improve, test, and monitor the effectiveness of our Service</li>
-                    <li>Develop and test new products and features</li>
-                    <li>Monitor metrics such as total number of visitors, traffic, and demographic patterns</li>
-                    <li>Diagnose or fix technology problems</li>
-                    <li>Automatically update the IMMIGRNT application on your device</li>
-                </ul>
-                <h3>Sharing of Your Information</h3>
-                <p>
-                    We will not rent or sell your information to third parties outside IMMIGRNT without your consent, except as noted in this Policy. Parties with whom we may share your information:
-                </p>
-                <ul>
-                    <li>
-                        We may share User Content not personal information with potential business partners, service providers as a way of improving our service and providing relevant content. This will be done under confidentiality terms.
-                    </li>
-                    <li>
-                        We may remove parts of data that can identify you and share anonymized data with other parties. We may also combine your information with other information in a way that it is no longer associated with you and share that aggregated information.
-                    </li>
-                    <li>
-                        We may be required to disclose your information without your prior consent by law for the following reasons:
-                        <ul>
-                            <li>Comply with law or legal process</li>
-                            <li>Protect and defend our rights and property, or the rights and property of a third party</li>
-                            <li>Protect us against misuse or unauthorized use of any of IMMIGRNT’s products, software, services, or other proprietary materials</li>
-                            <li>Prevent death or imminent bodily harm</li>
-                            <li>Prevent and address fraud and other illegal activity</li>
-                        </ul>
-                    </li>
-                </ul>
-                <h3>How We Store Your Information</h3>
-                <h4>Storage and Processing:</h4>
-                <p>
-                    We use commercially reasonable precautions to help keep your personal information safe and stored securely. However, IMMIGRNT cannot ensure the security of any information you transmit to IMMIGRNT or guarantee that information on the Service may not be accessed, disclosed, altered, or destroyed.
-                </p>
-                <p>
-                    Please do your part to help us. You are responsible for maintaining the secrecy of your unique password and account information, and for controlling access to emails between you and IMMIGRNT, at all times. Your privacy settings may also be affected by changes the social media services you connect to IMMIGRNT make to their services. We are not responsible for the functionality, privacy, or security measures of any other organization.
-                </p>
-                <p>
-                    Following termination or deactivation of your account, IMMIGRNT, its Affiliates, or its Service Providers may retain information (including your profile information) and User Content for a commercially reasonable time for backup, archival, and/or audit purposes.
-                </p>
-                <p>
-                    Email our support to know about deleting your account <a href="mailto:info@immigrnt.com">info@immigrnt.com</a>
-                </p>
-                <h3>Children's Privacy</h3>
-                <p>
-                    IMMIGRNT does not knowingly collect or solicit any information from anyone under the age of 13 or knowingly allow such persons to register for the Service. The Service and its content are not directed at children under the age of 13. In the event that we learn that we have collected personal information from a child under age 13 without parental consent, we will delete that information as quickly as possible. If you believe that we might have any information from or about a child under 13, please contact us.
-                </p>
-                <h3>Other Websites and Services</h3>
-                <p>
-                    We are not responsible for the practices employed by any websites or services linked to or from our Service, including the information or content contained within them. Please remember that when you use a link to go from our Service to another website or service, our Privacy Policy does not apply to those third-party websites or services. Your browsing and interaction on any third-party website or service, including those that have a link on our website/software, or are accessed through our web/in-app browser are subject to that third party's own rules and policies. In addition, you agree that we are not responsible and do not have control over any third-parties that you authorize to access your User Content. If you are using a third-party website or service and you allow them to access your User Content you do so at your own risk.
-                </p>
-                <h3>Your Data Protection Rights Under the General Data Protection Regulation (GDPR)</h3>
-                <p>If you are a resident of the EEA, you have the following data protection rights:</p>
-                <ul>
-                    <li>
-                        If you wish to access, correct, update, or request deletion of your personal information, you can do so at any time by <a href="mailto:info@immigrnt.com">info@immigrnt.com</a>.
-                    </li>
-                    <li>
-                        In addition, you can object to the processing of your personal information, ask us to restrict the processing of your personal information, or request portability of your personal information. Again, you can exercise these rights by emailing <a href="mailto:info@immigrnt.com">info@immigrnt.com</a>.
-                    </li>
-                    <li>
-                        You have the right to opt-out of marketing communications we send you at any time. You can exercise this right by clicking on the "unsubscribe" or "opt-out" link in the marketing emails we send you. To opt-out of other forms of marketing, please contact us by emailing <a href="mailto:info@immigrnt.com">info@immigrnt.com</a>.
-                    </li>
-                    <li>
-                        Similarly, if we have collected and process your personal information with your consent, then you can withdraw your consent at any time. Withdrawing your consent will not affect the lawfulness of any processing we conducted prior to your withdrawal, nor will it affect the processing of your personal information conducted in reliance on lawful processing grounds other than consent.
-                    </li>
-                    <li>
-                        You have the right to complain to a data protection authority about our collection and use of your personal information. For more information, please contact your local data protection authority.
-                    </li>
-                </ul>
-                <p>
-                    We respond to all requests we receive from individuals wishing to exercise their data protection rights in accordance with applicable data protection laws.
-                </p>
-                <h3>Changes to Our Privacy Policy</h3>
-                <p>
-                    IMMIGRNT may modify or update this Privacy Policy from time to time, so please review it periodically. We may provide you additional forms of notice of modifications or updates as appropriate under the circumstances. Your continued use of IMMIGRNT or the Service after any modification to this Privacy Policy will constitute your acceptance of such modification.
-                </p>
-            </section>
-        </main>
-		<footer>
-			<p>© 2025 immigrnt. All rights reserved. <a href="./tnc.html">Terms & Conditions.</a></p>
-		</footer> 
-	</body>
-	<script defer src="./scripts/script.js"></script>
-	<script type="text/javascript">
-		/*<![CDATA[*/
-		(function () {
-			var scriptURL =
-				"https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js";
-			if (window.ShopifyBuy) {
-				if (window.ShopifyBuy.UI) {
-					ShopifyBuyInit();
-				} else {
-					loadScript();
-				}
-			} else {
-				loadScript();
-			}
-			function loadScript() {
-				var script = document.createElement("script");
-				script.async = true;
-				script.src = scriptURL;
-				(
-					document.getElementsByTagName("head")[0] ||
-					document.getElementsByTagName("body")[0]
-				).appendChild(script);
-				script.onload = ShopifyBuyInit;
-			}
+          </li>
+        </ul>
+        <h3>How We Store Your Information</h3>
+        <h4>Storage and Processing:</h4>
+        <p>
+          We use commercially reasonable precautions to help keep your personal
+          information safe and stored securely. However, IMMIGRNT cannot ensure
+          the security of any information you transmit to IMMIGRNT or guarantee
+          that information on the Service may not be accessed, disclosed,
+          altered, or destroyed.
+        </p>
+        <p>
+          Please do your part to help us. You are responsible for maintaining
+          the secrecy of your unique password and account information, and for
+          controlling access to emails between you and IMMIGRNT, at all times.
+          Your privacy settings may also be affected by changes the social media
+          services you connect to IMMIGRNT make to their services. We are not
+          responsible for the functionality, privacy, or security measures of
+          any other organization.
+        </p>
+        <p>
+          Following termination or deactivation of your account, IMMIGRNT, its
+          Affiliates, or its Service Providers may retain information (including
+          your profile information) and User Content for a commercially
+          reasonable time for backup, archival, and/or audit purposes.
+        </p>
+        <p>
+          Email our support to know about deleting your account
+          <a href="mailto:info@immigrnt.com">info@immigrnt.com</a>
+        </p>
+        <h3>Children's Privacy</h3>
+        <p>
+          IMMIGRNT does not knowingly collect or solicit any information from
+          anyone under the age of 13 or knowingly allow such persons to register
+          for the Service. The Service and its content are not directed at
+          children under the age of 13. In the event that we learn that we have
+          collected personal information from a child under age 13 without
+          parental consent, we will delete that information as quickly as
+          possible. If you believe that we might have any information from or
+          about a child under 13, please contact us.
+        </p>
+        <h3>Other Websites and Services</h3>
+        <p>
+          We are not responsible for the practices employed by any websites or
+          services linked to or from our Service, including the information or
+          content contained within them. Please remember that when you use a
+          link to go from our Service to another website or service, our Privacy
+          Policy does not apply to those third-party websites or services. Your
+          browsing and interaction on any third-party website or service,
+          including those that have a link on our website/software, or are
+          accessed through our web/in-app browser are subject to that third
+          party's own rules and policies. In addition, you agree that we are not
+          responsible and do not have control over any third-parties that you
+          authorize to access your User Content. If you are using a third-party
+          website or service and you allow them to access your User Content you
+          do so at your own risk.
+        </p>
+        <h3>
+          Your Data Protection Rights Under the General Data Protection
+          Regulation (GDPR)
+        </h3>
+        <p>
+          If you are a resident of the EEA, you have the following data
+          protection rights:
+        </p>
+        <ul>
+          <li>
+            If you wish to access, correct, update, or request deletion of your
+            personal information, you can do so at any time by
+            <a href="mailto:info@immigrnt.com">info@immigrnt.com</a>.
+          </li>
+          <li>
+            In addition, you can object to the processing of your personal
+            information, ask us to restrict the processing of your personal
+            information, or request portability of your personal information.
+            Again, you can exercise these rights by emailing
+            <a href="mailto:info@immigrnt.com">info@immigrnt.com</a>.
+          </li>
+          <li>
+            You have the right to opt-out of marketing communications we send
+            you at any time. You can exercise this right by clicking on the
+            "unsubscribe" or "opt-out" link in the marketing emails we send you.
+            To opt-out of other forms of marketing, please contact us by
+            emailing <a href="mailto:info@immigrnt.com">info@immigrnt.com</a>.
+          </li>
+          <li>
+            Similarly, if we have collected and process your personal
+            information with your consent, then you can withdraw your consent at
+            any time. Withdrawing your consent will not affect the lawfulness of
+            any processing we conducted prior to your withdrawal, nor will it
+            affect the processing of your personal information conducted in
+            reliance on lawful processing grounds other than consent.
+          </li>
+          <li>
+            You have the right to complain to a data protection authority about
+            our collection and use of your personal information. For more
+            information, please contact your local data protection authority.
+          </li>
+        </ul>
+        <p>
+          We respond to all requests we receive from individuals wishing to
+          exercise their data protection rights in accordance with applicable
+          data protection laws.
+        </p>
+        <h3>Changes to Our Privacy Policy</h3>
+        <p>
+          IMMIGRNT may modify or update this Privacy Policy from time to time,
+          so please review it periodically. We may provide you additional forms
+          of notice of modifications or updates as appropriate under the
+          circumstances. Your continued use of IMMIGRNT or the Service after any
+          modification to this Privacy Policy will constitute your acceptance of
+          such modification.
+        </p>
+      </section>
+    </main>
+    <footer>
+      <p>
+        © 2025 immigrnt. All rights reserved.
+        <a href="./tnc.html">Terms & Conditions.</a>
+      </p>
+    </footer>
+  </body>
+  <script defer src="./scripts/script.js"></script>
+  <script>
+    (function () {
+      "use strict";
 
-			function ShopifyBuyInit() {
-				var client = ShopifyBuy.buildClient({
-					domain: "a7cpqd-t6.myshopify.com",
-					storefrontAccessToken: "499807ad1d9398ef053c159d436b2a71",
-				});
-				ShopifyBuy.UI.onReady(client).then(function (ui) {
-					ui.createComponent("cart", {
-						id: "15033473204611",
-						toggles: [{ node: document.getElementById("cart-toggle") }],
-						moneyFormat: "%E2%82%AC%7B%7Bamount_with_comma_separator%7D%7D",
-						options: {
-							toggle: {
-								sticky: false,
-								iframe: false,
-								"templates":{
-									icon: '',
-									count: '<span class="{{data.classes.toggle.count}}" data-element="toggle.count">cart ({{data.count}})</span>',
-								},
-							},
-							cart: {
-										styles: {
-											button: {
-												":hover": {
-													color: "#222222",
-													"background-color": "#fff",
-													border: "1px solid #222222",
+      /* ---------------------------- Config (edit me) ---------------------------- */
+      const SHOPIFY_DOMAIN = "a7cpqd-t6.myshopify.com";
+      const STOREFRONT_TOKEN = "499807ad1d9398ef053c159d436b2a71";
+      const DEFAULT_EUR_MARKET_COUNTRY = "BE"; // your default EUR market country code
+      const BUY_BUTTON_SDK =
+        "https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js";
 
-												},
-												"background-color": "#222222",
-											},
-											title: {
-												color: "#252525",
-											},
-											header: {
-												color: "#252525",
-											},
-											lineItems: {
-												color: "#252525",
-											},
-											subtotalText: {
-												color: "#252525",
-											},
-											subtotal: {
-												color: "#252525",
-											},
-											notice: {
-												color: "#252525",
-											},
-											currency: {
-												color: "#252525",
-											},
-											close: {
-												color: "#252525",
-												":hover": {
-													color: "#252525",
-												},
-											},
-											empty: {
-												color: "#252525",
-											},
-											noteDescription: {
-												color: "#252525",
-											},
-											discountText: {
-												color: "#252525",
-											},
-											discountIcon: {
-												fill: "#252525",
-											},
-											discountAmount: {
-												color: "#252525",
-											},
-										},
-										text: {
-											title: "CART",
-											total: "TOTAL",
-											empty: "BUY SUM!",
-											notice: "",
-											button: "TO CHECKOUT!",
-										},
-										popup: false,
-									},
-						},
-					});
-				});
-			}
-		})();
-		/*]]>*/
-	</script> 
+      /* ------------------------------- Utilities -------------------------------- */
+
+      // Query param override: ?forceCountry=PL  (good for testing)
+      function overrideFromQuery() {
+        const m = location.search.match(/[?&]forceCountry=([A-Z]{2})/);
+        return m ? m[1] : null;
+      }
+
+      // Promise that resolves the first time an element matching selector appears
+      function waitForElement(selector, root = document) {
+        return new Promise((resolve) => {
+          const el = root.querySelector(selector);
+          if (el) return resolve(el);
+          const mo = new MutationObserver(() => {
+            const el2 = root.querySelector(selector);
+            if (el2) {
+              mo.disconnect();
+              resolve(el2);
+            }
+          });
+          mo.observe(root, { childList: true, subtree: true });
+        });
+      }
+
+      // Robust geolocation: query multiple public providers, allow overrides
+      async function getCountryCode() {
+        try {
+          const forced =
+            overrideFromQuery() || localStorage.getItem("forceCountry");
+          if (forced) {
+            console.log("[geo] forced country via query/localStorage:", forced);
+            return forced.toUpperCase();
+          }
+        } catch (e) {
+          console.warn("[geo] override check failed:", e);
+        }
+
+        const providers = [
+          { url: "https://ipwho.is/", pick: (j) => j && j.country_code },
+          { url: "https://ipapi.co/json/", pick: (j) => j && j.country_code },
+          {
+            url: "https://get.geojs.io/v1/ip/geo.json",
+            pick: (j) => j && j.country_code,
+          },
+          {
+            url: "https://geolocation-db.com/json/",
+            pick: (j) => j && j.country_code,
+          },
+        ];
+
+        for (const p of providers) {
+          try {
+            const r = await fetch(p.url, {
+              cache: "no-store",
+              headers: { Accept: "application/json" },
+            });
+            console.log("[geo] fetch", p.url, "status:", r.status);
+            if (!r.ok) continue;
+            const j = await r.json();
+            console.log("[geo] response", p.url, j);
+            const cc = p.pick(j);
+            if (cc && /^[A-Za-z]{2}$/.test(cc)) return cc.toUpperCase();
+          } catch (e) {
+            console.warn("[geo] provider failed:", p.url, e);
+          }
+        }
+
+        console.warn(
+          "[geo] all providers failed — falling back to default market"
+        );
+        return null;
+      }
+
+      // Only the countries we care about; everyone else → EUR market country
+      function pickBuyerCountry(cc) {
+        if (cc === "PL") return "PL";
+        if (cc === "UA") return "UA";
+        return DEFAULT_EUR_MARKET_COUNTRY;
+      }
+
+      // Visual price formatting in the cart UI
+      function moneyFormatForCountry(cc) {
+        switch (cc) {
+          case "PL":
+            // 1.234,56 zł  (non-breaking space before zł)
+            return "{{amount_with_comma_separator}}\u00A0zł";
+          case "UA":
+            // ₴1.234,56
+            return "₴{{amount_with_comma_separator}}";
+          default:
+            // €1.234,56
+            return "€{{amount_with_comma_separator}}";
+        }
+      }
+
+      // Make the cart’s separate currency code badge match our detected market
+      function setCartCurrencyBadge(cc) {
+        const map = { PL: "PLN", UA: "UAH" };
+        const code = map[cc] || "EUR";
+
+        const setNow = () => {
+          const el =
+            document.querySelector(".shopify-buy__currency") ||
+            document.querySelector('[data-element="cart.currency"]');
+          if (el) {
+            el.textContent = code;
+            return true;
+          }
+          return false;
+        };
+
+        if (!setNow()) {
+          new MutationObserver((_, obs) => {
+            if (setNow()) obs.disconnect();
+          }).observe(document.body, { childList: true, subtree: true });
+        }
+      }
+
+      // Create a Storefront Cart with buyerIdentity.countryCode and redirect to checkout
+      async function forceCheckoutCurrency(cc, cartComponent) {
+        const items =
+          cartComponent && cartComponent.model && cartComponent.model.lineItems
+            ? cartComponent.model.lineItems
+            : [];
+        if (!items.length) {
+          alert("Your cart is empty.");
+          return;
+        }
+
+        const lines = items.map((li) => ({
+          merchandiseId: li.variant.id, // GraphQL GID (gid://shopify/ProductVariant/…)
+          quantity: li.quantity,
+        }));
+
+        const mutation = `
+      mutation CreateCart($lines:[CartLineInput!], $buyer: CartBuyerIdentityInput) {
+        cartCreate(input:{ lines: $lines, buyerIdentity: $buyer }) {
+          cart { checkoutUrl }
+          userErrors { message }
+        }
+      }
+    `;
+
+        try {
+          const res = await fetch(
+            `https://${SHOPIFY_DOMAIN}/api/2025-01/graphql.json`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                "X-Shopify-Storefront-Access-Token": STOREFRONT_TOKEN,
+              },
+              body: JSON.stringify({
+                query: mutation,
+                variables: { lines, buyer: { countryCode: cc } },
+              }),
+            }
+          );
+
+          const json = await res.json();
+          console.log("[checkout] cartCreate response:", json);
+
+          const url = json?.data?.cartCreate?.cart?.checkoutUrl;
+          if (!url) {
+            const msg =
+              (json?.data?.cartCreate?.userErrors || [])
+                .map((e) => e.message)
+                .join(", ") || "Unknown error";
+            alert("Could not start checkout: " + msg);
+            return;
+          }
+          window.location.href = url;
+        } catch (err) {
+          console.error("[checkout] cartCreate failed:", err);
+          alert("Something went wrong starting checkout.");
+        }
+      }
+
+      // Ensure Buy Button SDK present; then run ShopifyBuyInit
+      function ensureBuyButtonSdk() {
+        return new Promise((resolve) => {
+          if (window.ShopifyBuy && window.ShopifyBuy.UI) return resolve();
+          const s = document.createElement("script");
+          s.async = true;
+          s.src = BUY_BUTTON_SDK;
+          s.onload = () => resolve();
+          (document.head || document.body).appendChild(s);
+        });
+      }
+
+      /* --------------------------- Main initialization -------------------------- */
+
+      async function ShopifyBuyInit() {
+        console.log("[init] start");
+
+        await ensureBuyButtonSdk();
+
+        const rawCC = (await getCountryCode()) || DEFAULT_EUR_MARKET_COUNTRY;
+        const buyerCC = pickBuyerCountry(rawCC);
+        const moneyFmt = moneyFormatForCountry(buyerCC);
+
+        console.log("[init] geo:", { rawCC, buyerCC, moneyFmt });
+
+        // Ensure there is a cart toggle anchor in the nav (if not present)
+        let toggleNode = document.getElementById("cart-toggle");
+        if (!toggleNode) {
+          toggleNode = document.createElement("a");
+          toggleNode.id = "cart-toggle";
+          toggleNode.href = "#";
+          toggleNode.textContent = "cart (0)";
+          document.body.appendChild(toggleNode);
+        }
+
+        const client = ShopifyBuy.buildClient({
+          domain: SHOPIFY_DOMAIN,
+          storefrontAccessToken: STOREFRONT_TOKEN,
+        });
+
+        // Build the cart component
+        window.ShopifyBuy.UI.onReady(client).then(async function (ui) {
+          const cart = ui.createComponent("cart", {
+            toggles: [{ node: toggleNode }],
+            moneyFormat: moneyFmt, // visual formatting per visitor
+            options: {
+              toggle: {
+                sticky: false,
+                iframe: false,
+                templates: {
+                  icon: "",
+                  count:
+                    '<span class="{{data.classes.toggle.count}}" data-element="toggle.count">cart ({{data.count}})</span>',
+                },
+              },
+              cart: {
+                styles: {
+                  button: {
+                    ":hover": {
+                      color: "#222222",
+                      "background-color": "#fff",
+                      border: "1px solid #222222",
+                    },
+                    "background-color": "#222222",
+                  },
+                  title: { color: "#252525" },
+                  header: { color: "#252525" },
+                  lineItems: { color: "#252525" },
+                  subtotalText: { color: "#252525" },
+                  subtotal: { color: "#252525" },
+                  notice: { color: "#252525" },
+                  currency: { color: "#252525" },
+                  close: { color: "#252525", ":hover": { color: "#252525" } },
+                  empty: { color: "#252525" },
+                  noteDescription: { color: "#252525" },
+                  discountText: { color: "#252525" },
+                  discountIcon: { fill: "#252525" },
+                  discountAmount: { color: "#252525" },
+                },
+                text: {
+                  title: "CART",
+                  total: "TOTAL",
+                  empty: "BUY SUM!",
+                  notice: "",
+                  button: "TO CHECKOUT!",
+                },
+                popup: false,
+              },
+            },
+          });
+
+          // Update the cart currency badge (EUR/PLN/UAH) to match detected market
+          setCartCurrencyBadge(buyerCC);
+
+          // Intercept checkout button to force the checkout currency via Storefront Cart
+          const buttonSelector =
+            ".shopify-buy__btn--cart-checkout, .shopify-buy__cart-checkout-button";
+
+          const checkoutBtn = await waitForElement(buttonSelector);
+          checkoutBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            forceCheckoutCurrency(buyerCC, cart);
+          });
+
+          console.log("[init] cart ready; checkout hooked");
+        });
+      }
+
+      // Kick things off after DOM is interactive. (Script is deferred, but this is safe.)
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", ShopifyBuyInit);
+      } else {
+        ShopifyBuyInit();
+      }
+    })();
+  </script>
 </html>
