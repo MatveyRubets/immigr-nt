@@ -206,6 +206,34 @@
             } else {
                 loadScript();
             }
+
+            async function getCountryCode() {
+                const forced = overrideFromQuery() || localStorage.getItem('forceCountry');
+                if (forced) return forced.toUpperCase();
+                try {
+                const r = await fetch('https://ipapi.co/json/');
+                const j = await r.json();
+                return j && j.country_code ? j.country_code : null;
+                } catch(e) {
+                return null;
+                }
+            }
+
+              function moneyFormatForCountry(cc) {
+                // EU-style comma decimals for these; tweak if you prefer dot-decimals.
+                switch (cc) {
+                case 'PL':
+                    // "1.234,56 zł" (non-breaking space before zł)
+                    return "{{amount_with_comma_separator}}\u00A0zł";
+                case 'UA':
+                    // "₴1.234,56"
+                    return "₴{{amount_with_comma_separator}}";
+                default:
+                    // Fallback EUR: "€1.234,56"
+                    return "€{{amount_with_comma_separator}}";
+                }
+            }
+
             function loadScript() {
                 var script = document.createElement("script");
                 script.async = true;
@@ -216,11 +244,15 @@
                 ).appendChild(script);
                 script.onload = ShopifyBuyInit;
             }
-            function ShopifyBuyInit() {
+            async function ShopifyBuyInit() {
                 var client = ShopifyBuy.buildClient({
                     domain: "a7cpqd-t6.myshopify.com",
                     storefrontAccessToken: "499807ad1d9398ef053c159d436b2a71",
                 });
+                console.log("BE")
+                const cc = (await getCountryCode()) || 'BE'; // default to a EUR market country
+                const moneyFmt = moneyFormatForCountry(cc);
+
                 ShopifyBuy.UI.onReady(client).then(function (ui) {
                     ui.createComponent("product", {
                         id: "15337402204547",
@@ -228,7 +260,7 @@
                             "product-component-1755383715593"
                         ),
                         toggles: [{ node: document.getElementById("cart-toggle") }],
-                        moneyFormat: "%E2%82%AC%7B%7Bamount_with_comma_separator%7D%7D",
+                        moneyFormat: moneyFmt,
                         options: {
                             product: {
                                 styles: {
